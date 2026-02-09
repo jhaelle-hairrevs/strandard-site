@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strandard</title>
+  <meta name="description" content="Strandard helps you narrow down the perfect hair brand for your hair by texture, inches, curl, and real reviews." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <img src="assets/icon-only.png" class="logo" alt="Strandard logo" />
+        <span class="wordmark">Strandard</span>
+      </div>
+      <a class="pill" href="#waitlist" aria-label="Join the waitlist">Coming soon</a>
+    </header>
+
+    <section class="hero">
+      <div class="heroCopy">
+        <h1 class="headline">
+          Those hair extensions were supposed to blend, right
+        </h1>
+
+        <p class="lead">
+          Instead, you are on your 15th YouTube tutorial, brush in one hand, the other about to hit the repeat button.
+          I know those arms are aching. Put the brush down and listen.
+        </p>
+
+        <p class="lead">
+          I built something just for you.
+        </p>
+
+        <p class="body">
+          Strandard is the app that helps you narrow down the perfect hair brand for your hair, filtered by texture, inches,
+          curl pattern, and real experiences. No more guessing. No more wasting money. No more late night frustration trying
+          to make the wrong hair work.
+        </p>
+
+        <p class="body">
+          Join a community of women who are searching for the hair brand that actually delivers. Find out which brands are
+          worth it, which ones are shipping synthetic hair and calling it human, and which ones are the real deal.
+        </p>
+
+        <p class="body strong">
+          Because doing your hair should never end in aching arms, tears, and regretting the day you opened that DIY tutorial.
+        </p>
+
+        <div class="ctaRow">
+          <a href="#" class="btnPrimary" aria-label="App Store button">App Store</a>
+          <a href="#" class="btnSecondary" aria-label="Google Play button">Google Play</a>
+        </div>
+
+        <div id="waitlist" class="waitlistCard" role="region" aria-label="Waitlist signup">
+          <h2 class="subhead">Coming soon</h2>
+          <p class="small">
+            Want early access and launch updates. Drop your email and you will be first to know.
+          </p>
+
+          <form class="waitlistForm" id="waitlistForm" autocomplete="on">
+            <label class="srOnly" for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Your email" required />
+            <button type="submit" class="btnPrimary btnPrimarySmall">Join</button>
+          </form>
+
+          <p class="tiny" id="formStatus" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="heroVisual" aria-label="App preview">
+        <div class="previewFrame">
+          <img src="assets/app-preview.jpg" class="previewImg" alt="Strandard app preview" />
+        </div>
+        <p class="caption">App preview</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="privacy.html">Privacy Policy</a>
+      <span class="dot">•</span>
+      <span class="footerText">© <span id="year"></span> Strandard</span>
+    </footer>
+  </main>
+
+  <script>
+    const SUPABASE_URL = "https://qhqcbufoyulzwkeoisxd.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFocWNidWZveXVsendrZW9pc3hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3OTQxNTIsImV4cCI6MjA4MjM3MDE1Mn0.qFFBkjyeIqOCtgWocveegQWTa1V3CrH_vmnrpcYeGRw";
+
+    const form = document.getElementById("waitlistForm");
+    const statusEl = document.getElementById("formStatus");
+    const yearEl = document.getElementById("year");
+    yearEl.textContent = new Date().getFullYear();
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      if (!email) return;
+
+      statusEl.textContent = "Saving...";
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_signups`, {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({ email, source: "landing" })
+        });
+
+        if (res.ok) {
+          statusEl.textContent = "You are in. We will email you when Strandard launches.";
+          form.reset();
+          return;
+        }
+
+        const msg = await res.text();
+
+        if (msg.toLowerCase().includes("duplicate") || msg.toLowerCase().includes("unique")) {
+          statusEl.textContent = "You are already on the list. We will email you when Strandard launches.";
+          form.reset();
+          return;
+        }
+
+        statusEl.textContent = "Saved. Please try again in a moment.";
+      } catch (err) {
+        statusEl.textContent = "Saved. Please try again in a moment.";
+      }
+    });
+  </script>
+</body>
+</html>
