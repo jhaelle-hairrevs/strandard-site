@@ -98,17 +98,49 @@ a:hover { text-decoration: underline; }
 .hero__title {
   margin: 0 0 14px;
   font-family: Canela, Georgia, serif;
-  font-weight: 700;
-  color: var(--crimson);
+  font-weight: 600;
+  color: var(--espresso);
   letter-spacing: -0.03em;
   line-height: 1.05;
-  font-size: clamp(38px, 5vw, 62px);
+  font-size: clamp(34px, 4.6vw, 56px);
+}
+
+.hero__title-accent {
+  color: var(--crimson);
+  font-weight: 700;
+}
+
+.hero__title-rest {
+  color: var(--espresso);
+  font-weight: 600;
+}
+
+.hero__tagline {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--crimson);
 }
 
 .hero__lede {
   margin: 0 0 14px;
   font-size: 17px;
   max-width: 60ch;
+}
+
+.hero__lede--lead {
+  font-size: 18px;
+}
+
+.lede__strong {
+  font-weight: 700;
+}
+
+.lede__accent {
+  color: var(--crimson);
+  font-weight: 700;
 }
 
 .badges {
@@ -244,3 +276,19 @@ a:hover { text-decoration: underline; }
 }
 
 .footer__dot { opacity: 0.6; }
+
+.policyPage {
+  background: var(--bg);
+}
+
+.policyWrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 52px 32px 72px;
+}
+
+@media (max-width: 700px) {
+  .policyWrap {
+    padding: 42px 22px 60px;
+  }
+}
