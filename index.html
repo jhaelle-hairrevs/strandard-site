@@ -1,139 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strandard</title>
-  <link rel="icon" type="image/png" href="/assets/icon-only.png">
-  <link rel="apple-touch-icon" href="/assets/icon-only.png">
-  <meta name="description" content="Strandard helps you narrow down the perfect hair brand for your hair by texture, inches, curl, and real reviews." />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strandard</title>
+    <meta
+      name="description"
+      content="Find hair brands that actually match your texture, length, curl pattern, and style goals."
+    />
 
-<body>
-  <main class="wrap">
-    <header class="top">
-      <div class="brand">
-        <img src="/assets/icon-only.png" class="logo" alt="Strandard logo" />
-        <span class="wordmark">Strandard</span>
-      </div>
-      <a class="pill" href="#waitlist" aria-label="Join the waitlist">Coming soon</a>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/icon-only.png" />
+    <link rel="apple-touch-icon" href="/assets/icon-only.png" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="/assets/icon-only.png" alt="Strandard" />
+        <span class="brand__name">Strandard</span>
+      </a>
+
+      <a class="topbar__link" href="/privacy">Privacy</a>
     </header>
 
-    <section class="hero">
-      <div class="heroCopy">
-        <h1 class="headline">
-          Those hair extensions were supposed to blend, right
-        </h1>
+    <main class="wrap">
+      <!-- Emotional hook -->
+      <section class="hero">
+        <div class="hero__inner">
+          <div class="hero__copy">
+            <h1 class="hero__title">
+              Those hair extensions were supposed to blend, right
+            </h1>
 
-        <p class="lead">
-          Instead, you are on your 15th YouTube tutorial, brush in one hand, the other about to hit the repeat button.
-          I know those arms are aching. Put the brush down and listen.
-        </p>
+            <p class="hero__lede">
+              But somehow you are on your fifteenth tutorial, brush in one hand,
+              the repeat button in the other. Your arms are tired and your mind is
+              over it. Strandard helps you narrow down the right hair brands for
+              you, down to the inches and curl.
+            </p>
 
-        <p class="lead">
-          I built something just for you.
-        </p>
+            <p class="hero__lede">
+              Join a community of girls figuring it out together. See which brands
+              are the real deal, which ones are frauds, and which ones are shipping
+              synthetic hair labeled as human. You deserve easier hair days.
+            </p>
 
-        <p class="body">
-          Strandard is the app that helps you narrow down the perfect hair brand for your hair, filtered by texture, inches,
-          curl pattern, and real experiences. No more guessing. No more wasting money. No more late night frustration trying
-          to make the wrong hair work.
-        </p>
+            <!-- Store badges -->
+            <div class="badges" aria-label="Download badges">
+              <a class="badge" href="#" aria-label="Download on the App Store">
+                <img
+                  src="/assets/images/brand-logos/app-store-badge.png"
+                  alt="Download on the App Store"
+                  loading="lazy"
+                />
+              </a>
 
-        <p class="body">
-          Join a community of women who are searching for the hair brand that actually delivers. Find out which brands are
-          worth it, which ones are shipping synthetic hair and calling it human, and which ones are the real deal.
-        </p>
+              <a class="badge" href="#" aria-label="Get it on Google Play">
+                <img
+                  src="/assets/images/brand-logos/google-play-badge.png"
+                  alt="Get it on Google Play"
+                  loading="lazy"
+                />
+              </a>
+            </div>
 
-        <p class="body strong">
-          Because doing your hair should never end in aching arms, tears, and regretting the day you opened that DIY tutorial.
-        </p>
+            <!-- Waitlist -->
+            <section class="waitlist" aria-label="Waitlist">
+              <h2 class="waitlist__title">Coming soon</h2>
+              <p class="waitlist__sub">
+                Leave your email and get early access when the first invites drop.
+              </p>
 
-        <div class="ctaRow">
-          <a href="#" class="btnPrimary" aria-label="App Store button">App Store</a>
-          <a href="#" class="btnSecondary" aria-label="Google Play button">Google Play</a>
+              <form id="waitlistForm" class="waitlist__form">
+                <label class="sr-only" for="email">Email address</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  inputmode="email"
+                  autocomplete="email"
+                  placeholder="Your email"
+                  required
+                />
+                <button type="submit">Join the waitlist</button>
+              </form>
+
+              <p id="waitlistMsg" class="waitlist__msg" role="status" aria-live="polite"></p>
+            </section>
+          </div>
+
+          <!-- App preview -->
+          <div class="hero__visual">
+            <div class="phone">
+              <img
+                class="phone__img"
+                src="/assets/app-preview.jpg"
+                alt="Strandard app preview"
+                loading="eager"
+              />
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div id="waitlist" class="waitlistCard" role="region" aria-label="Waitlist signup">
-          <h2 class="subhead">Coming soon</h2>
-          <p class="small">
-            Want early access and launch updates. Drop your email and you will be first to know.
-          </p>
+      <footer class="footer">
+        <a class="footer__link" href="/privacy">Privacy Policy</a>
+        <span class="footer__dot">•</span>
+        <span class="footer__copy">© 2026 Strandard</span>
+      </footer>
+    </main>
 
-          <form class="waitlistForm" id="waitlistForm" autocomplete="on">
-            <label class="srOnly" for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="Your email" required />
-            <button type="submit" class="btnPrimary btnPrimarySmall">Join</button>
-          </form>
+    <script>
+      // Waitlist Option A:
+      // Posts to /api/waitlist (your Cloudflare Worker route) which then inserts into Supabase.
+      const form = document.getElementById("waitlistForm");
+      const msg = document.getElementById("waitlistMsg");
 
-          <p class="tiny" id="formStatus" aria-live="polite"></p>
-        </div>
-      </div>
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        msg.textContent = "";
+        const email = new FormData(form).get("email");
 
-      <div class="heroVisual" aria-label="App preview">
-        <div class="previewFrame">
-          <img src="/assets/app-preview.jpg" class="previewImg" alt="Strandard app preview" />
-        </div>
-        <p class="caption">App preview</p>
-      </div>
-    </section>
+        const btn = form.querySelector("button");
+        const prev = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Submitting";
 
-    <footer class="footer">
-      <a href="privacy.html">Privacy Policy</a>
-      <span class="dot">•</span>
-      <span class="footerText">© <span id="year"></span> Strandard</span>
-    </footer>
-  </main>
+        try {
+          const res = await fetch("/api/waitlist", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
 
-  <script>
-    const SUPABASE_URL = "https://qhqcbufoyulzwkeoisxd.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFocWNidWZveXVsendrZW9pc3hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3OTQxNTIsImV4cCI6MjA4MjM3MDE1Mn0.qFFBkjyeIqOCtgWocveegQWTa1V3CrH_vmnrpcYeGRw";
-
-    const form = document.getElementById("waitlistForm");
-    const statusEl = document.getElementById("formStatus");
-    const yearEl = document.getElementById("year");
-    yearEl.textContent = new Date().getFullYear();
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value.trim();
-      if (!email) return;
-
-      statusEl.textContent = "Saving...";
-
-      try {
-        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_signups`, {
-          method: "POST",
-          headers: {
-            "apikey": SUPABASE_ANON_KEY,
-            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-            "Content-Type": "application/json",
-            "Prefer": "return=minimal"
-          },
-          body: JSON.stringify({ email, source: "landing" })
-        });
-
-        if (res.ok) {
-          statusEl.textContent = "You are in. We will email you when Strandard launches.";
-          form.reset();
-          return;
+          if (res.ok) {
+            form.reset();
+            msg.textContent = "You are on the list. Check your inbox soon.";
+            msg.className = "waitlist__msg waitlist__msg--ok";
+          } else {
+            msg.textContent = "That did not go through. Try again in a moment.";
+            msg.className = "waitlist__msg waitlist__msg--bad";
+          }
+        } catch (err) {
+          msg.textContent = "Network issue. Please try again.";
+          msg.className = "waitlist__msg waitlist__msg--bad";
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev;
         }
-
-        const msg = await res.text();
-
-        if (msg.toLowerCase().includes("duplicate") || msg.toLowerCase().includes("unique")) {
-          statusEl.textContent = "You are already on the list. We will email you when Strandard launches.";
-          form.reset();
-          return;
-        }
-
-        statusEl.textContent = "Saved. Please try again in a moment.";
-      } catch (err) {
-        statusEl.textContent = "Saved. Please try again in a moment.";
-      }
-    });
-  </script>
-</body>
+      });
+    </script>
+  </body>
 </html>
