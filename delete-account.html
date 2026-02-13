@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="/assets/icon-only.png">
-  <link rel="apple-touch-icon" href="/assets/icon-only.png">
+  <link rel="icon" type="image/png" href="assets/icon-only.png">
+  <link rel="apple-touch-icon" href="assets/icon-only.png">
   <link rel="stylesheet" href="/styles.css" />
   <title>Delete Account • Strandard</title>
 </head>
@@ -162,17 +162,52 @@
     submitBtn.textContent = "Submitting...";
 
     try {
-      const { error } = await supabase
+      // Some schemas may not include the "acknowledged" column.
+      // We'll try the full payload first, then fall back to email/reason only.
+      let res = await supabase
         .from("delete_requests")
         .insert([{ email, reason: reason || null, acknowledged: true }]);
 
-      if (error) throw error;
+      if (res.error) {
+        // Fallback insert (minimal columns)
+        res = await supabase
+          .from("delete_requests")
+          .insert([{ email, reason: reason || null }]);
+      }
+
+      if (res.error) throw res.error;
 
       form.reset();
       setStatus("Request received. We’ll follow up if we need verification.", "success");
     } catch (err) {
-      console.error(err);
-      setStatus("Something went wrong. Please try again or email support@thestrandard.com.", "error");
+      console.error('Delete request error:', err);
+
+      const msg = String(err?.message || err || '');
+      // Common Supabase errors:
+      // - RLS blocks anon inserts (code 42501)
+      // - Column doesn't exist
+      // - Table missing
+      if (msg.toLowerCase().includes('row level security') || String(err?.code) === '42501') {
+        setStatus(
+          "Your database is blocking anonymous submissions (RLS). Please enable an INSERT policy for delete_requests, or email support@thestrandard.com.",
+          "error"
+        );
+      } else if (msg.toLowerCase().includes('column') && msg.toLowerCase().includes('does not exist')) {
+        setStatus(
+          "Form submitted, but the table schema doesn't match. Ensure delete_requests has columns: email (text) and reason (text).",
+          "error"
+        );
+      } else if (msg.toLowerCase().includes('relation') && msg.toLowerCase().includes('does not exist')) {
+        setStatus(
+          "The delete_requests table was not found in Supabase. Create it (email, reason, created_at) or email support@thestrandard.com.",
+          "error"
+        );
+      } else {
+        setStatus(
+          "Something went wrong. Please try again or email support@thestrandard.com.",
+          "error"
+        );
+      }
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = "Request account deletion";
