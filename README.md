@@ -22,6 +22,17 @@ Place these files into `/assets/` with these exact names:
   - Put `CabinetGrotesk-Variable.woff2` in `/fonts/`
   - If your filename differs, update the `@font-face` in `styles.css`.
 
+## Delete Account form (Supabase)
+The Delete Account page writes submissions to your Supabase table **`delete_requests`**.
+
+- Supabase client config lives in `/config.js`.
+- The form inserts these fields:
+  - `email` (text)
+  - `reason` (text, nullable)
+  - `acknowledged` (boolean)
+
+**Important:** because this is client-side, make sure your Supabase Row Level Security (RLS) policies allow *only* the intended insert behavior (and nothing else).
+
 ## Deploy to Cloudflare Pages
 1. In Cloudflare Pages, create a new project.
 2. Upload this folder (or connect a Git repo).

@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#630625" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
-<title>Delete Account • Strandard</title>
+  <title>Delete Account • Strandard</title>
 </head>
 <body>
 <header class="topbar">
@@ -18,52 +19,81 @@
         <img src="/assets/icon-only.png" alt="Strandard logo">
       </a>
       <nav class="navlinks" aria-label="Primary">
-        <a class="" href="/index.html">Home</a>
-        <a class="" href="/privacy.html">Privacy Policy</a>
+        <a href="/index.html">Home</a>
+        <a href="/privacy.html">Privacy Policy</a>
         <a class="active" href="/delete-account.html">Delete Account</a>
       </nav>
     </div>
   </div>
 </header>
+
 <main class="pageWrap">
   <div class="container">
     <div class="panel pageCard">
-      <div class="pillTag">＊ ACCOUNT</div>
-      <h1>Delete Account</h1>
+      <h1>Delete Your Strandard Account</h1>
 
-      <p>
-        To request account deletion, submit the form below. We’ll verify ownership and permanently delete your account
-        and associated personal data (except where retention is required by law).
+      <p class="ledeLight">
+        It’s never easy saying goodbye, and we’re sorry to see you go. If you would like to permanently delete your
+        Strandard account and the personal data associated with it, you may submit a deletion request below.
       </p>
 
-      <div class="notice">
-        <strong>Tip:</strong> Use the email address connected to your Strandard account so we can match you quickly.
-      </div>
+      <h2 class="miniHeading">What gets deleted:</h2>
+      <p>When your deletion is processed, we remove:</p>
+      <ul>
+        <li>Your account authentication credentials</li>
+        <li>Your saved profile details (hair profile, preferences)</li>
+        <li>Your submitted personal data that’s tied to your account</li>
+        <li>Any private data linked to your email or user ID</li>
+      </ul>
 
-      <form class="formGrid" action="#" method="post">
-        <div class="field">
-          <label for="del-name">Name</label>
-          <input id="del-name" name="name" placeholder="Your name *" required />
-        </div>
-        <div class="field">
+      <h2 class="miniHeading">What may remain:</h2>
+      <p>
+        If you posted reviews or content that appears publicly, we will either delete it or anonymize it so it is no
+        longer tied to you, depending on what’s required for platform integrity and legal compliance.
+      </p>
+
+      <h2 class="miniHeading">How long it takes:</h2>
+      <p>
+        Most deletion requests are processed within <strong>7 days</strong>. In some cases, it may take up to
+        <strong>30 days</strong> to fully remove data from backups.
+      </p>
+
+      <h2 class="miniHeading">Support fallback:</h2>
+      <p>
+        If you need help, email us at <a class="supportLink" href="mailto:support@thestrandard.com">support@thestrandard.com</a>.
+      </p>
+
+      <p class="muted" style="margin-top:18px;">
+        Submit the email used for your account. We process deletion requests within 7 days. Backup removal may take up to 30 days.
+      </p>
+
+      <form id="deleteForm" class="deleteForm" novalidate>
+        <div class="field full">
           <label for="del-email">Email</label>
-          <input id="del-email" name="email" type="email" placeholder="Email address *" required />
+          <input id="del-email" name="email" type="email" placeholder="Email used for your Strandard account" required />
         </div>
+
         <div class="field full">
           <label for="del-reason">Reason (optional)</label>
-          <textarea id="del-reason" name="reason" placeholder="Anything we should know?"></textarea>
+          <textarea id="del-reason" name="reason" placeholder="Reason for deletion (optional)"></textarea>
         </div>
+
+        <div class="field full checkboxRow">
+          <label class="checkLabel">
+            <input id="del-confirm" type="checkbox" />
+            <span>I understand this deletion is permanent</span>
+          </label>
+        </div>
+
         <div class="field full submitRow">
-          <button class="btn" type="submit">Submit</button>
+          <button id="del-submit" class="btn btnWide" type="submit">Request account deletion</button>
+          <div id="del-status" class="formStatus" aria-live="polite"></div>
         </div>
       </form>
-
-      <p style="margin-top:18px;">
-        If you need help, email support@yourdomain.com (replace with your real support email).
-      </p>
     </div>
   </div>
 </main>
+
 <footer class="footer">
   <div class="container">
     <div class="footerGrid">
@@ -80,5 +110,67 @@
     <div class="copy">© 2026 Strandard</div>
   </div>
 </footer>
+
+<script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+  import { SUPABASE_URL, SUPABASE_KEY } from "/config.js";
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const form = document.getElementById("deleteForm");
+  const emailEl = document.getElementById("del-email");
+  const reasonEl = document.getElementById("del-reason");
+  const confirmEl = document.getElementById("del-confirm");
+  const statusEl = document.getElementById("del-status");
+  const submitBtn = document.getElementById("del-submit");
+
+  function setStatus(message, type) {
+    statusEl.textContent = message || "";
+    statusEl.dataset.type = type || "";
+  }
+
+  function isValidEmail(value) {
+    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(String(value || "").trim());
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    setStatus("", "");
+
+    const email = emailEl.value.trim();
+    const reason = reasonEl.value.trim();
+
+    if (!isValidEmail(email)) {
+      setStatus("Please enter a valid email address.", "error");
+      emailEl.focus();
+      return;
+    }
+    if (!confirmEl.checked) {
+      setStatus("Please confirm that you understand deletion is permanent.", "error");
+      confirmEl.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    try {
+      const { error } = await supabase
+        .from("delete_requests")
+        .insert([{ email, reason: reason || null, acknowledged: true }]);
+
+      if (error) throw error;
+
+      form.reset();
+      setStatus("Request received. We’ll follow up if we need verification.", "success");
+    } catch (err) {
+      console.error(err);
+      setStatus("Something went wrong. Please try again or email support@thestrandard.com.", "error");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Request account deletion";
+    }
+  });
+</script>
 </body>
 </html>
