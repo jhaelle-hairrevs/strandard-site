@@ -62,7 +62,7 @@ button,input,textarea{font:inherit;}
   display:flex; align-items:center; gap:12px;
 }
 .brand img{
-  width:72px; height:72px; object-fit:contain;
+  width:60px; height:60px; object-fit:contain;
   border:2px solid rgba(0,0,0,.22);
   border-radius:10px;
   background:rgba(255,255,255,.14);
@@ -112,13 +112,13 @@ button,input,textarea{font:inherit;}
   color:white;
   font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
   font-weight:500;
-  font-size: clamp(40px, 4.2vw, 64px);
+  font-size: clamp(42px, 4.2vw, 66px);
   line-height:1.05;
 }
 .lede{
   margin:0 0 22px;
   color:rgba(255,255,255,.9);
-  font-size:20px;
+  font-size:22px;
   max-width:52ch;
   letter-spacing:.05em;
   line-height:2;
@@ -150,7 +150,7 @@ button,input,textarea{font:inherit;}
   position:relative;
   z-index:2;
 }
-.badgeCircle{
+.badgeCircle_old{
   position:absolute;
   left:-16px;
   top:38px;
@@ -167,8 +167,8 @@ button,input,textarea{font:inherit;}
   animation: spin var(--spinDur) linear infinite;
   user-select:none;
 }
-.badgeCircle:hover{cursor:pointer;}
-.badgeCircle .inner{
+.badgeCircle_old:hover{cursor:pointer;}
+.badgeCircle_old .inner{
   width:92px; height:92px;
   border-radius:999px;
   display:grid; place-items:center;
@@ -341,7 +341,11 @@ button,input,textarea{font:inherit;}
 }
 .field.full{grid-column:1 / -1;}
 .submitRow{
-  display:flex; justify-content:center;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:10px;
   margin-top:22px;
 }
 .btn{
@@ -481,7 +485,7 @@ button,input,textarea{font:inherit;}
 @media (max-width: 920px){
   .heroGrid{grid-template-columns:1fr; gap:26px;}
   .heroArt{justify-content:flex-start;}
-  .badgeCircle{left:10px; top:16px;}
+  .badgeCircle_old{left:10px; top:16px;}
   .perkGrid{grid-template-columns:1fr;}
   .footerGrid{grid-template-columns:1fr; text-align:center;}
   .footerLogo{justify-content:center;}
@@ -502,3 +506,15 @@ button,input,textarea{font:inherit;}
   transition: opacity .8s ease, transform .8s ease;
 }
 .hero-reveal.in{opacity:1; transform: translateY(0);}
+
+
+/* custom cursor */
+body{cursor:url('assets/cursor.svg') 2 2, auto;}
+a, button, input, textarea, label{cursor:url('assets/cursor.svg') 2 2, pointer;}
+
+
+/* badge spin (hair dryer) */
+.badgeSpin{position:absolute; left:20px; top:38px; width:120px; height:120px; z-index:5; animation: spinSlow 12s linear infinite; filter:none;}
+.badgeSpin.spin-boost{animation: spinSlow 12s linear infinite, spinFast 1s linear 1;}
+@keyframes spinSlow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes spinFast{from{transform:rotate(0deg);}to{transform:rotate(720deg);}}

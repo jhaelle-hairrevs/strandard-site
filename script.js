@@ -100,3 +100,17 @@
     form.reset();
   });
 })();
+
+
+// Hair dryer badge: slow spin always, boost on hover for 1s
+(() => {
+  const badge = document.querySelector('.badgeSpin');
+  if (!badge) return;
+
+  let t = null;
+  badge.addEventListener('mouseenter', () => {
+    badge.classList.add('spin-boost');
+    if (t) clearTimeout(t);
+    t = setTimeout(() => badge.classList.remove('spin-boost'), 1000);
+  });
+})();
