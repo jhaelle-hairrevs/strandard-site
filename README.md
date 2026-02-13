@@ -1,44 +1,26 @@
-# Strandard Static Site (Cloudflare Pages)
+# Strandard – Cloudflare Pages Static Site
 
-## What you got
-- `index.html` (Home)
-- `privacy.html` (Privacy Policy)
-- `delete-account.html` (Delete Account)
-- `styles.css`
-- `script.js` (perk reveal animation)
-- `/assets` (put your images here)
-- `/fonts` (optional: self-host Cabinet Grotesk)
-
-## Assets you told me to use
-Place these files into `/assets/` with these exact names:
-- `icon-only.png`
-- `Strandard-Phone.png`
-- `app-store-badge.png`
-- `google-play-badge.png`
-
-## Fonts
-- DM Sans loads via Google Fonts automatically.
-- Cabinet Grotesk is set up for self-hosting:
-  - Put `CabinetGrotesk-Variable.woff2` in `/fonts/`
-  - If your filename differs, update the `@font-face` in `styles.css`.
-
-## Delete Account form (Supabase)
-The Delete Account page writes submissions to your Supabase table **`delete_requests`**.
-
-- Supabase client config lives in `/config.js`.
-- The form inserts these fields:
-  - `email` (text)
-  - `reason` (text, nullable)
-  - `acknowledged` (boolean)
-
-**Important:** because this is client-side, make sure your Supabase Row Level Security (RLS) policies allow *only* the intended insert behavior (and nothing else).
-
-## Deploy to Cloudflare Pages
-1. In Cloudflare Pages, create a new project.
-2. Upload this folder (or connect a Git repo).
+## Deploy (recommended)
+### Option A — Cloudflare Pages (Dashboard)
+1. Cloudflare Dashboard → Pages → Create a project
+2. Upload this folder (or connect a Git repo)
 3. Build settings:
    - Framework preset: **None**
    - Build command: **(leave blank)**
    - Output directory: **/** (root)
 
-That's it — it’s a static site.
+### Option B — Wrangler (Cloudflare Pages)
+From this folder:
+```bash
+npx wrangler pages deploy . --project-name strandard
+```
+
+> If you run `wrangler deploy` you’re deploying a Worker, which is why you saw the “assets directory” message.
+
+## Fonts
+Cabinet Grotesk is commercial, so it is **not** bundled. Add your `.woff2` into:
+`/assets/fonts/` (see `assets/fonts/README.txt`).
+
+## Forms
+- Contact form: sends an email using the user’s default mail client to `jhaelle@thestrandard.com`.
+- Delete account: submits to Supabase table `delete_requests`.

@@ -34,6 +34,28 @@
   });
 })();
 
+// Badge circle: always spins slowly; on hover, spin fast for 1 second
+(() => {
+  const badge = document.querySelector('.badgeCircle');
+  if (!badge) return;
+
+  const slow = '18s';
+  const fast = '1s';
+  let timer = null;
+
+  // Ensure default
+  badge.style.setProperty('--spinDur', slow);
+
+  badge.addEventListener('mouseenter', () => {
+    badge.style.setProperty('--spinDur', fast);
+    if (timer) window.clearTimeout(timer);
+    timer = window.setTimeout(() => {
+      badge.style.setProperty('--spinDur', slow);
+      timer = null;
+    }, 1000);
+  });
+})();
+
 // Contact form: send to email via mailto (static-friendly)
 (() => {
   const form = document.getElementById('contactForm');
