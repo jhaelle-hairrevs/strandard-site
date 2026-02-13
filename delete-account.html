@@ -58,7 +58,6 @@
         <strong>30 days</strong> to fully remove data from backups.
       </p>
 
-      <h2 class="miniHeading">Support fallback:</h2>
       <p>
         If you need help, email us at <a class="supportLink" href="mailto:support@thestrandard.com">support@thestrandard.com</a>.
       </p>
@@ -130,8 +129,14 @@
   }
 
   function isValidEmail(value) {
-    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(String(value || "").trim());
+    // NOTE: use single backslashes in regex literal
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
   }
+
+  [emailEl, reasonEl, confirmEl].forEach((el) => {
+    el.addEventListener("input", () => setStatus("", ""));
+    el.addEventListener("change", () => setStatus("", ""));
+  });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();

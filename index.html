@@ -31,13 +31,13 @@
       <div class="heroGrid">
         <div>
           <div class="kicker">＊ HI GIRLIES!</div>
-          <h1 class="h1">A hair brand review<br/>app built for women<br/>by women</h1>
-          <p class="lede">
+          <h1 class="h1 hero-reveal" data-hr="0">A hair brand review<br/>app built for women<br/>by women</h1>
+          <p class="lede hero-reveal" data-hr="1">
             Instead of relying on scattered videos, biased reviews, or brand claims, Strandard brings together tutorials,
             real-world wear tests, and visual proof in one organized place. See how hair extensions look, feel, install,
             and hold up over time before you buy.
           </p>
-          <div class="badges" aria-label="Download badges">
+          <div class="badges hero-reveal" data-hr="2" aria-label="Download badges">
             <a href="#" aria-label="Download on the App Store">
               <img src="/assets/app-store-badge.png" alt="Download on the App Store">
             </a>
@@ -51,11 +51,11 @@
           <div class="phoneWrap">
             <div class="sparkle" aria-hidden="true"></div>
 
-            <div class="badgeCircle" title="Badge spins on hover">
+            <div class="badgeCircle hero-reveal" data-hr="4" title="Badge spins on hover">
               <div class="inner">DOWNLOAD ME<br/>＋ I’M FREE</div>
             </div>
 
-            <img class="phone" src="/assets/Strandard-Phone.png" alt="Strandard app preview on phone">
+            <img class="phone hero-reveal" data-hr="3" src="/assets/Strandard-Phone.png" alt="Strandard app preview on phone">
           </div>
         </div>
       </div>
@@ -70,14 +70,14 @@
       <div class="perkGrid" aria-label="Perks">
         <article class="card reveal" data-index="0">
           <div class="iconBubble" aria-hidden="true">
-            <!-- puzzle icon -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 14v5a2 2 0 0 1-2 2h-5"/>
-              <path d="M4 10V5a2 2 0 0 1 2-2h5"/>
-              <path d="M16 2.2a2.5 2.5 0 1 0 0 5H22V4.2A2 2 0 0 0 20 2.2h-4Z"/>
-              <path d="M8 21.8a2.5 2.5 0 1 1 0-5H2v2.9A2 2 0 0 0 4 21.8h4Z"/>
-              <path d="M12 4v16"/>
-              <path d="M4 12h16"/>
+            <!-- puzzle piece icon -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 13v4a2 2 0 0 1-2 2h-3"/>
+              <path d="M5 11V7a2 2 0 0 1 2-2h3"/>
+              <path d="M12 7a2 2 0 1 0-2-2H7"/>
+              <path d="M12 17a2 2 0 1 1 2 2h3"/>
+              <path d="M10 5h4a2 2 0 0 1 2 2v4"/>
+              <path d="M14 19H10a2 2 0 0 1-2-2v-4"/>
             </svg>
           </div>
           <div>
@@ -119,14 +119,26 @@
 
         <article class="card tint-blue reveal" data-index="3">
           <div class="iconBubble" aria-hidden="true">
-            <!-- nodes icon -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="6" cy="6" r="2"></circle>
-              <circle cx="18" cy="6" r="2"></circle>
-              <circle cx="12" cy="18" r="2"></circle>
-              <path d="M8 7.5l3 8"></path>
-              <path d="M16 7.5l-3 8"></path>
-              <path d="M8 6h8"></path>
+            <!-- glowing hair icon -->
+            <svg width="30" height="30" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <defs>
+                <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(38 18) rotate(115) scale(30 30)">
+                  <stop stop-color="#FFF" stop-opacity="0.95"/>
+                  <stop offset="0.45" stop-color="#F39FA9" stop-opacity="0.55"/>
+                  <stop offset="1" stop-color="#F39FA9" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="b"/>
+                  <feMerge>
+                    <feMergeNode in="b"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <circle cx="40" cy="18" r="18" fill="url(#g)"/>
+              <path d="M22 46c0-10 6-18 14-22 9-4 17-2 22 2" stroke="#1C1C1C" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/>
+              <path d="M18 46c0-14 9-26 22-30 12-4 22 0 26 6" stroke="#1C1C1C" stroke-width="3" stroke-linecap="round"/>
+              <path d="M18 46c0 6 5 10 12 10h8c7 0 12-4 12-10" stroke="#1C1C1C" stroke-width="3" stroke-linecap="round"/>
             </svg>
           </div>
           <div>
@@ -153,7 +165,7 @@
         <div class="center"><div class="pillTag">＊ CONTACT</div></div>
         <h2>Have some questions?<br/>Slide in our dms!</h2>
 
-        <form class="formGrid" action="#" method="post">
+        <form id="contactForm" class="formGrid" action="#" method="post" novalidate>
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" placeholder="Your name *" required />
@@ -168,6 +180,7 @@
           </div>
           <div class="field full submitRow">
             <button class="btn" type="submit">Submit</button>
+            <div id="contactStatus" class="formStatus" aria-live="polite"></div>
           </div>
         </form>
       </div>
