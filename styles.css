@@ -1,2 +1,573 @@
-body { font-family: Arial; }
-.header { position: sticky; top:0; background:white; }
+:root{
+  --burgundy:#630625;
+  --pink:#F39FA9;
+  --light:#F7F7F7;
+  --blue:#E3F2FF;
+  --lav:#FDE4F9;
+  --mint:#F3FFE3;
+  --butter:#FFF5C9;
+  --ink:#1C1C1C;
+  --stroke:#2a2a2a;
+  --shadow: 0 10px 30px rgba(0,0,0,.18);
+  --radius: 18px;
+  --radius-lg: 26px;
+  --max: 1140px;
+}
+
+/*
+  Cabinet Grotesk is a commercial font.
+  To see it on the live site, add your licensed .woff2 files to:
+    /assets/fonts/
+  and ensure the filenames below match.
+*/
+@font-face{
+  font-family:"Cabinet Grotesk";
+  /* Try both locations so you can drop the file in either folder */
+  src:
+    url("assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2"),
+    url("fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  background:var(--burgundy);
+  color:var(--ink);
+  font-family:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.5;
+}
+
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+button,input,textarea{font:inherit;}
+
+.container{max-width:var(--max); margin:0 auto; padding:0 24px;}
+
+.topbar{
+  background:var(--pink);
+  border-bottom:3px solid var(--stroke);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  height:86px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+}
+.brand img{
+  width:60px; height:60px; object-fit:contain;
+  border:2px solid rgba(0,0,0,.22);
+  border-radius:10px;
+  background:rgba(255,255,255,.14);
+}
+.navlinks{
+  display:flex; align-items:center; gap:28px;
+  font-weight:800;
+}
+.navlinks a{
+  position:relative;
+  padding:8px 2px;
+}
+.navlinks a.active{color:#1d4ed8;}
+.navlinks a::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:4px;
+  height:2px; background:transparent;
+}
+.navlinks a:hover::after{background:rgba(0,0,0,.3);}
+
+.hero{
+  padding:48px 0 44px;
+  position:relative;
+}
+.heroGrid{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap:36px;
+  align-items:center;
+}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 14px;
+  border-radius:999px;
+  border:2px solid var(--stroke);
+  background:#fff;
+  box-shadow: 0 4px 0 rgba(0,0,0,.25);
+  font-weight:900;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+.h1{
+  margin:18px 0 14px;
+  color:white;
+  font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
+  font-weight:500;
+  font-size: clamp(42px, 4.2vw, 66px);
+  line-height:1.05;
+}
+.lede{
+  margin:0 0 22px;
+  color:rgba(255,255,255,.9);
+  font-size:22px;
+  max-width:52ch;
+  letter-spacing:.05em;
+  line-height:2;
+}
+.badges{
+  display:flex; flex-direction:column; gap:14px; width:220px;
+}
+.badges a{display:block; height:56px;}
+.badges a img{
+  height:100%;
+  width:auto;
+  object-fit:contain;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
+}
+
+.heroArt{
+  position:relative;
+  display:flex;
+  justify-content:flex-end;
+}
+.phoneWrap{
+  position:relative;
+  width:min(420px, 100%);
+}
+.phoneWrap img.phone{
+  width:100%;
+  height:auto;
+  filter:none; /* remove phone shadow */
+  position:relative;
+  z-index:2;
+}
+.badgeCircle_old{
+  position:absolute;
+  left:-16px;
+  top:38px;
+  z-index:5; /* ensure badge sits above phone */
+  width:118px;
+  height:118px;
+  border-radius:999px;
+  background:rgba(255,255,255,.92);
+  border:2px solid var(--stroke);
+  box-shadow:none; /* remove shadow from spinning circle */
+  display:grid;
+  place-items:center;
+  --spinDur: 18s;
+  animation: spin var(--spinDur) linear infinite;
+  user-select:none;
+}
+.badgeCircle_old:hover{cursor:pointer;}
+.badgeCircle_old .inner{
+  width:92px; height:92px;
+  border-radius:999px;
+  display:grid; place-items:center;
+  color:var(--ink);
+  font-weight:900;
+  text-align:center;
+  font-size:11px;
+  line-height:1.2;
+}
+
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* Decorative icons (randomly placed) */
+.decorIcon{position:absolute; pointer-events:none; user-select:none;}
+.decorSparklesTop{right:36px; top:52px; width:54px; height:auto; z-index:6;}
+.decorLightning{left:24px; top:82px; width:46px; height:auto; z-index:6;}
+
+.sectionPink{position:relative; overflow:hidden;}
+.decorSparklesPerks{left:40px; top:44px; width:52px; height:auto; opacity:.95;}
+.decorSparklesPerks2{right:56px; top:50px; width:52px; height:auto; opacity:.95;}
+
+.decorEnvelope{left:48px; bottom:120px; width:72px; height:auto;}
+.decorClouds{right:48px; bottom:54px; width:150px; height:auto;}
+.sparkle::before,
+.sparkle::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:2px solid rgba(0,0,0,.75);
+  background:rgba(255,255,255,.15);
+  transform: rotate(45deg);
+  border-radius:6px;
+}
+.sparkle::after{
+  inset:8px;
+  background:transparent;
+}
+
+.section{
+  padding:56px 0;
+}
+.sectionPink{
+  background:var(--pink);
+  border-top:3px solid var(--stroke);
+  border-bottom:3px solid var(--stroke);
+}
+.sectionTitle{
+  text-align:center;
+  margin:0;
+  font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
+  font-weight:900;
+  font-size: clamp(30px, 3vw, 44px);
+}
+.pillTag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 14px;
+  border-radius:999px;
+  border:2px solid var(--stroke);
+  background:rgba(255,255,255,.8);
+  box-shadow: 0 4px 0 rgba(0,0,0,.25);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:12px;
+  margin:0 auto 14px;
+}
+.contactSection .pillTag{color:#000;}
+.center{display:flex; justify-content:center;}
+
+.perkGrid{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:22px;
+}
+.card{
+  border:2px solid var(--stroke);
+  border-radius:var(--radius-lg);
+  background:rgba(255,255,255,.86);
+  box-shadow: 0 10px 0 rgba(0,0,0,.25);
+  padding:24px;
+  display:flex;
+  align-items:center; /* center icon + text vertically */
+  gap:16px;
+  min-height:160px;
+}
+.card.tint-blue{background:var(--blue);}
+.card.tint-lav{background:var(--lav);}
+.card.tint-mint{background:var(--mint);}
+.card.tint-butter{background:var(--butter);}
+.iconBubble{
+  flex:0 0 auto;
+  width:56px;
+  height:56px;
+  border-radius:999px;
+  background:rgba(243,159,169,.55);
+  border:2px solid var(--stroke);
+  display:grid;
+  place-items:center;
+}
+.card h3{
+  margin:0 0 6px;
+  font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
+  font-size:22px;
+  font-weight:800;
+}
+.card p{
+  margin:0;
+  color:rgba(0,0,0,.75);
+  font-size:18px;
+  line-height:1.6;
+}
+
+.reveal{
+  opacity:0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.in-view{
+  opacity:1;
+  transform: translateY(0);
+}
+
+.contactSection{position:relative;}
+.contactBg{background:var(--burgundy); color:white;}
+.panel{
+  background:white;
+  border:2px solid var(--stroke);
+  border-radius:var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding:38px 34px 30px;
+}
+.panel h2{
+  margin:10px 0 8px;
+  font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
+  font-weight:900;
+  font-size: clamp(30px, 3vw, 44px);
+  color:var(--ink);
+  text-align:center;
+  line-height:1.1;
+}
+.formGrid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:22px 26px;
+  margin-top:26px;
+}
+.field label{
+  display:block;
+  font-size:12px;
+  color:rgba(0,0,0,.85);
+  margin-bottom:6px;
+}
+.field input, .field textarea{
+  width:100%;
+  border:0;
+  border-bottom:2px solid rgba(0,0,0,.85);
+  padding:10px 2px 12px;
+  outline:none;
+  background:transparent;
+  color:var(--ink);
+}
+.field input::placeholder,
+.field textarea::placeholder{color:rgba(0,0,0,.55);}
+.field textarea{
+  min-height:120px;
+  resize:vertical;
+}
+.field.full{grid-column:1 / -1;}
+.submitRow{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:10px;
+  margin-top:22px;
+}
+.btn{
+  background:var(--pink);
+  border:2px solid var(--stroke);
+  border-radius:12px;
+  padding:10px 22px;
+  font-weight:900;
+  box-shadow: 0 6px 0 rgba(0,0,0,.25);
+  cursor:pointer;
+  transition: transform .08s ease;
+}
+.btn:active{transform: translateY(2px);}
+.decor-envelope{
+  position:absolute;
+  left:34px;
+  top:50%;
+  transform: translateY(-20%);
+  width:64px;
+  height:64px;
+}
+.decor-envelope svg{width:100%; height:100%; filter: drop-shadow(0 10px 16px rgba(0,0,0,.25));}
+.decor-clouds{
+  position:absolute;
+  right:44px;
+  bottom:18px;
+  width:86px;
+  height:44px;
+  opacity:.95;
+}
+
+.footer{
+  padding:34px 0 26px;
+  color:rgba(255,255,255,.9);
+}
+.footerGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items:center;
+  gap:18px;
+}
+.footerLogo{display:flex; align-items:center; gap:12px;}
+.footerLogo img{
+  width:86px; height:auto;
+  border:2px solid rgba(255,255,255,.35);
+  background:transparent; /* avoid tinting the logo */
+  border-radius:14px;
+  padding:0;
+}
+.footerLinks{
+  display:flex;
+  justify-content:center;
+  gap:26px;
+  font-weight:800;
+}
+.footerLinks a{white-space:nowrap;}
+.footerLinks a{opacity:.95;}
+.footerLinks a{white-space:nowrap;}
+.footerLinks a:hover{opacity:1; text-decoration:underline;}
+.copy{
+  text-align:center;
+  font-size:14px;
+  margin-top:18px;
+  opacity:.9;
+}
+
+/* Content pages */
+.pageWrap{padding:48px 0 60px;}
+.pageCard{max-width:860px; margin:0 auto;}
+.pageCard h1{
+  margin:0 0 8px;
+  font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
+  font-weight:900;
+  font-size:42px;
+}
+.miniHeading{
+  margin:34px 0 10px;
+  font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
+  font-weight:900;
+  font-size:16px;
+  color:rgba(0,0,0,.9);
+}
+.muted{color:rgba(0,0,0,.55);}
+.ledeLight{color:rgba(0,0,0,.6);}
+.supportLink{color:var(--burgundy); font-weight:800;}
+
+/* Delete account form (match Framer look) */
+.deleteForm{max-width:760px; margin:30px auto 0;}
+.deleteForm .field label{color:rgba(0,0,0,.7); font-size:12px; font-weight:700;}
+.deleteForm .field input,
+.deleteForm .field textarea{
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:10px;
+  padding:14px 14px;
+  background:rgba(0,0,0,.04);
+  box-shadow:none;
+}
+.deleteForm .field textarea{min-height:110px;}
+.checkboxRow{margin-top:10px;}
+.checkLabel{display:flex; align-items:center; gap:10px; user-select:none;}
+.checkLabel input{width:16px; height:16px;}
+.checkLabel span{color:#d11; font-weight:700;}
+
+.btnWide{width:min(760px, 100%); justify-content:center;}
+.btnWide{
+  background:var(--burgundy);
+  color:white;
+  border:0;
+  box-shadow:none;
+  border-radius:14px;
+  padding:16px 18px;
+}
+.btnWide:hover{filter:brightness(1.03);}
+.btnWide:disabled{opacity:.7; cursor:not-allowed;}
+
+.formStatus{
+  margin-top:12px;
+  font-size:14px;
+  font-weight:700;
+  text-align:center;
+}
+.formStatus:empty{display:none;}
+.formStatus:empty{display:none;}
+.formStatus[data-type="success"]{color:#0f766e;}
+.formStatus[data-type="error"]{color:#b91c1c;}
+.pageCard p, .pageCard li{color:rgba(0,0,0,.75);}
+.pageCard ul{padding-left:18px;}
+.notice{
+  background:var(--butter);
+  border:2px solid var(--stroke);
+  border-radius:14px;
+  padding:14px 16px;
+  margin:14px 0 18px;
+}
+
+/* Responsive */
+@media (max-width: 920px){
+  .heroGrid{grid-template-columns:1fr; gap:26px;}
+  .heroArt{justify-content:flex-start;}
+  .badgeCircle_old{left:10px; top:16px;}
+  .perkGrid{grid-template-columns:1fr;}
+  .footerGrid{grid-template-columns:1fr; text-align:center;}
+  .footerLogo{justify-content:center;}
+  .footerLinks{justify-content:center;}
+  .decor-envelope,.decor-clouds{display:none;}
+}
+@media (max-width: 520px){
+  .navlinks{gap:18px; font-size:14px;}
+  .badges{width:100%; flex-direction:row; flex-wrap:wrap;}
+  .badges a img{height:46px; width:auto;}
+  .formGrid{grid-template-columns:1fr;}
+}
+
+/* Hero slide-up transitions */
+.hero-reveal{
+  opacity:0;
+  transform: translateY(18px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-reveal.in{opacity:1; transform: translateY(0);}
+
+
+/* custom cursor */
+:root{
+  --cursor-default: url('assets/pointer.png') 4 2, auto;
+  --cursor-select: url('assets/select.png') 4 2, pointer;
+  --cursor-text: url('assets/text.png') 6 14, text;
+}
+html, body{cursor: var(--cursor-default);}
+a, button, [role="button"], .reveal, .perkCard, .btn, .storeBadges a{cursor: var(--cursor-select);}
+input, textarea, select{cursor: var(--cursor-text);}
+label{cursor: var(--cursor-select);}
+
+
+/* badge spin (hair dryer) */
+.badgeSpin{position:absolute; left:20px; top:38px; width:120px; height:120px; z-index:5; animation: spinSlow 12s linear infinite; filter:none;}
+.badgeSpin.spin-boost{animation: spinSlow 12s linear infinite, spinFast 1s linear 1;}
+@keyframes spinSlow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes spinFast{from{transform:rotate(0deg);}to{transform:rotate(720deg);}}
+
+
+
+/* App store badges: force identical size */
+.badges img{
+  width: 190px;
+  height: 56px;
+  object-fit: contain;
+  display:block;
+}
+@media (max-width: 520px){
+  .badges img{ width: 170px; height: 52px; }
+}
+
+
+
+/* Custom cursors (drop your PNGs in /assets/) */
+body{
+  cursor: url("assets/pointer.png") 4 2, auto;
+}
+a, button, .btn, .pillTag, .card, input[type="checkbox"], label{
+  cursor: url("assets/select.png") 6 2, pointer;
+}
+input[type="text"], input[type="email"], textarea{
+  cursor: url("assets/text.png") 6 2, text;
+}
+
+
+
+/* Perk icon images */
+.iconBubble img.perkIconImg{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+  display:block;
+}
+
+
+/* policy spacing */
+.policyPage .miniHeading{margin-top:38px;}
+.policyPage ul{margin-top:12px;}
+
+
+/* Ensure delete form status appears under the button */
+.submitRow{display:flex;flex-direction:column;align-items:stretch;gap:10px;}
+.formStatus{margin-top:0;}

@@ -24,3 +24,7 @@ Cabinet Grotesk is commercial, so it is **not** bundled. Add your `.woff2` into:
 ## Forms
 - Contact form: sends an email using the user’s default mail client to `jhaelle@thestrandard.com`.
 - Delete account: submits to Supabase table `delete_requests`.
+
+
+### Custom cursor images (clarity)
+For the cursor to look crisp, export `pointer.png`, `select.png`, and `text.png` as **32×32** (or **64×64**) PNGs with transparency. If they are very large, browsers will downscale them and they can look blurry.

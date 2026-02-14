@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/icon-only.png">
-  <link rel="apple-touch-icon" href="assets/icon-only.png">
+  <link rel="icon" type="image/png" href="assets/icon-only.png?v=1">
+  <link rel="shortcut icon" type="image/png" href="assets/icon-only.png?v=1">
+  <link rel="apple-touch-icon" href="assets/icon-only.png?v=1">
   <link rel="stylesheet" href="/styles.css" />
   <title>Delete Account • Strandard</title>
 </head>
@@ -22,7 +23,7 @@
       </a>
       <nav class="navlinks" aria-label="Primary">
         <a href="/index.html">Home</a>
-        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
         <a class="active" href="/delete-account.html">Delete Account</a>
       </nav>
     </div>
@@ -79,6 +80,25 @@
           <textarea id="del-reason" name="reason" placeholder="Reason for deletion (optional)"></textarea>
         </div>
 
+
+        <div class="field full">
+          <label>What would you like to delete?</label>
+          <div class="radioGroup" role="radiogroup" aria-label="Deletion preference">
+            <label class="radioOption">
+              <input type="radio" name="deletion_preference" value="data_only" required>
+              <span>Delete my data only (including reviews &amp; videos)</span>
+            </label>
+            <label class="radioOption">
+              <input type="radio" name="deletion_preference" value="account_keep_data">
+              <span>Delete my account, but keep my data in the app (so other women can benefit)</span>
+            </label>
+            <label class="radioOption">
+              <input type="radio" name="deletion_preference" value="both">
+              <span>Delete both my account and my data</span>
+            </label>
+          </div>
+        </div>
+
         <div class="field full checkboxRow">
           <label class="checkLabel">
             <input id="del-confirm" type="checkbox" />
@@ -103,7 +123,7 @@
       </div>
       <div class="footerLinks">
         <a href="/index.html">Homepage</a>
-        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
         <a href="/delete-account.html">Delete Account</a>
       </div>
       <div></div>
@@ -146,6 +166,8 @@
 
     const email = emailEl.value.trim();
     const reason = reasonEl.value.trim();
+    const prefEl = form.querySelector('input[name="deletion_preference"]:checked');
+    const pref = prefEl ? prefEl.value : "";
 
     if (!isValidEmail(email)) {
       setStatus("Please enter a valid email address.", "error");
@@ -157,29 +179,34 @@
       confirmEl.focus();
       return;
     }
+    if (!pref) {
+      setStatus("Please select what you would like to delete.", "error");
+      return;
+    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
+ 
     try {
-      // Some schemas may not include the "acknowledged" column.
-      // We'll try the full payload first, then fall back to email/reason only.
-      let res = await supabase
-        .from("delete_requests")
-        .insert([{ email, reason: reason || null, acknowledged: true }]);
+      const prefMap = {
+        data_only: "Delete my data only (including reviews & videos)",
+        account_keep_data: "Delete my account, but keep my data in the app",
+        both: "Delete both my account and my data"
+      };
+      const prefLabel = prefMap[pref] || pref;
 
-      if (res.error) {
-        // Fallback insert (minimal columns)
-        res = await supabase
-          .from("delete_requests")
-          .insert([{ email, reason: reason || null }]);
-      }
+      const reasonWithPref = `${reason ? reason + "\n\n" : ""}Deletion preference: ${prefLabel}`;
+
+      const res = await supabase
+        .from("delete_requests")
+        .insert([{ email, reason: reasonWithPref }]);
 
       if (res.error) throw res.error;
 
       form.reset();
       setStatus("Request received. We’ll follow up if we need verification.", "success");
-    } catch (err) {
+    } catchh (err) {
       console.error('Delete request error:', err);
 
       const msg = String(err?.message || err || '');
