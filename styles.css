@@ -24,8 +24,8 @@
   font-family:"Cabinet Grotesk";
   /* Try both locations so you can drop the file in either folder */
   src:
-    url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2"),
-    url("/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+    url("assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2"),
+    url("fonts/CabinetGrotesk-Variable.woff2") format("woff2");
   font-weight:100 900;
   font-style:normal;
   font-display:swap;
@@ -518,3 +518,39 @@ a, button, input, textarea, label{cursor:url('assets/cursor.svg') 2 2, pointer;}
 .badgeSpin.spin-boost{animation: spinSlow 12s linear infinite, spinFast 1s linear 1;}
 @keyframes spinSlow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 @keyframes spinFast{from{transform:rotate(0deg);}to{transform:rotate(720deg);}}
+
+
+
+/* App store badges: force identical size */
+.badges img{
+  width: 190px;
+  height: 56px;
+  object-fit: contain;
+  display:block;
+}
+@media (max-width: 520px){
+  .badges img{ width: 170px; height: 52px; }
+}
+
+
+
+/* Custom cursors (drop your PNGs in /assets/) */
+body{
+  cursor: url("assets/pointer.png") 4 2, auto;
+}
+a, button, .btn, .pillTag, .card, input[type="checkbox"], label{
+  cursor: url("assets/select.png") 6 2, pointer;
+}
+input[type="text"], input[type="email"], textarea{
+  cursor: url("assets/text.png") 6 2, text;
+}
+
+
+
+/* Perk icon images */
+.iconBubble img.perkIconImg{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+  display:block;
+}
