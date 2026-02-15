@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delete Account | Strandard</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" type="image/png" href="/assets/icon-only.png" />
+  <link rel="apple-touch-icon" href="/assets/icon-only.png" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="/js/delete-account.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><img src="/assets/icon-only.png" alt="Strandard" class="brand-logo" /></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/delete-account/">Delete Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal-wrap">
+    <div class="legal-card">
+      <h1>Delete Your Strandard Account</h1>
+      <p class="muted">It’s never easy saying goodbye, and we’re sorry to see you go. If you would like to permanently delete your Strandard account and the personal data associated with it, you may submit a deletion request below.</p>
+
+      <h2>What gets deleted</h2>
+      <p>When your deletion is processed, we remove:</p>
+      <ul>
+        <li>Your account authentication credentials</li>
+        <li>Your saved profile details (hair profile, preferences)</li>
+        <li>Your submitted personal data that’s tied to your account</li>
+        <li>Any private data linked to your email or user ID</li>
+      </ul>
+
+      <h2>What may remain</h2>
+      <p>If you posted reviews or content that appears publicly, we will either delete it or anonymize it so it is no longer tied to you, depending on what’s required for platform integrity and legal compliance.</p>
+
+      <h2>How long it takes</h2>
+      <p>Most deletion requests are processed within <strong>7 days</strong>. In some cases, it may take up to <strong>30 days</strong> to fully remove data from backups.</p>
+
+      <p class="muted">Submit the email used for your account. We process deletion requests within 7 days. Backup removal may take up to 30 days.</p>
+
+      <form id="deleteRequestForm" class="delete-form" novalidate>
+        <div class="field">
+          <label for="dr_email">Email</label>
+          <input id="dr_email" name="email" type="email" placeholder="Email used for your Strandard account" autocomplete="email" required />
+          <div class="field-error" id="dr_email_err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label>What would you like to delete?</label>
+          <div class="radio-group">
+            <label class="radio">
+              <input type="radio" name="delete_option" value="data_only" required />
+              <span>Delete my data only (including reviews and videos)</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="delete_option" value="account_keep_data" />
+              <span>Delete my account and keep my data on the app for other women to benefit</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="delete_option" value="delete_both" />
+              <span>Delete both my account and my data</span>
+            </label>
+          </div>
+          <div class="field-error" id="dr_option_err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="dr_reason">Reason (optional)</label>
+          <textarea id="dr_reason" name="reason" rows="4" placeholder="Reason for deletion (optional)"></textarea>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="dr_ack" required />
+          <span>I understand this deletion is permanent</span>
+        </label>
+        <div class="field-error" id="dr_ack_err" aria-live="polite"></div>
+
+        <button type="submit" class="primary-btn">Request account deletion</button>
+        <div class="form-message" id="dr_message" aria-live="polite"></div>
+      </form>
+
+      <p class="support-line">If you need help, email us at <a href="mailto:support@thestrandard.com">support@thestrandard.com</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-brand" href="/"><img src="/assets/icon-only.png" alt="Strandard" class="footer-logo" /></a>
+      <nav class="footer-nav">
+        <a href="/">Homepage</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/delete-account/">Delete Account</a>
+      </nav>
+      <div class="footer-copy">© 2026 Strandard</div>
+    </div>
+  </footer>
+
+  <script>
+    window.__STRANDARD_SUPABASE__ = {
+      url: "https://qhqcbufoyulzwkeoisxd.supabase.co",
+      key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFocWNidWZveXVsendrZW9pc3hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3OTQxNTIsImV4cCI6MjA4MjM3MDE1Mn0.qFFBkjyeIqOCtgWocveegQWTa1V3CrH_vmnrpcYeGRw"
+    };
+  </script>
+</body>
+</html>
