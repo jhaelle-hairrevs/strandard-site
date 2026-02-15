@@ -1,30 +1,10 @@
-# Strandard – Cloudflare Pages Static Site
+# Strandard Production Static Site
 
-## Deploy (recommended)
-### Option A — Cloudflare Pages (Dashboard)
-1. Cloudflare Dashboard → Pages → Create a project
-2. Upload this folder (or connect a Git repo)
-3. Build settings:
-   - Framework preset: **None**
-   - Build command: **(leave blank)**
-   - Output directory: **/** (root)
+Upload this folder to Cloudflare Pages.
 
-### Option B — Wrangler (Cloudflare Pages)
-From this folder:
-```bash
-npx wrangler pages deploy . --project-name strandard
-```
+Routes:
+- / (home)
+- /privacy-policy/
+- /delete-account/
 
-> If you run `wrangler deploy` you’re deploying a Worker, which is why you saw the “assets directory” message.
-
-## Fonts
-Cabinet Grotesk is commercial, so it is **not** bundled. Add your `.woff2` into:
-`/assets/fonts/` (see `assets/fonts/README.txt`).
-
-## Forms
-- Contact form: sends an email using the user’s default mail client to `jhaelle@thestrandard.com`.
-- Delete account: submits to Supabase table `delete_requests`.
-
-
-### Custom cursor images (clarity)
-For the cursor to look crisp, export `pointer.png`, `select.png`, and `text.png` as **32×32** (or **64×64**) PNGs with transparency. If they are very large, browsers will downscale them and they can look blurry.
+Redirects in _redirects.
