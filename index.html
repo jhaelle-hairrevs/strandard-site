@@ -3,207 +3,117 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#630625" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="/assets/icon-only.png?v=1">
-  <link rel="shortcut icon" type="image/png" href="/assets/icon-only.png?v=1">
-  <link rel="apple-touch-icon" href="/assets/icon-only.png?v=1">
-  <link rel="stylesheet" href="/styles.css" />
-<title>Strandard</title>
+  <title>Strandard</title>
+  <meta name="description" content="Strandard – the gold strandard of hair."/>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/app.js" defer></script>
 </head>
 <body>
-<header class="topbar">
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="/" aria-label="Go to Strandard home">
+          <img src="/assets/logo.svg" alt="Strandard logo" />
+          <div class="wordmark">
+            <div class="title">Strandard</div>
+            <div class="sub">the gold strandard of hair</div>
+          </div>
+        </a>
+        <nav class="links" aria-label="Primary">
+          <a data-nav href="/">Home</a>
+          <a data-nav href="/privacy-policy">Privacy Policy</a>
+          <a data-nav href="/delete-account">Delete Account</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+<main class="hero">
   <div class="container">
-    <div class="nav">
-      <a class="brand" href="/index.html" aria-label="Strandard home">
-        <img src="/assets/icon-only.png" alt="Strandard logo">
-      </a>
-      <nav class="navlinks" aria-label="Primary">
-        <a class="active" href="/index.html">Home</a>
-        <a class="" href="/privacy-policy/">Privacy Policy</a>
-        <a class="" href="/delete-account.html">Delete Account</a>
-      </nav>
+    <div class="hero-grid">
+      <div>
+        <div class="h-eyebrow">Beauty + trust + community</div>
+        <h1>Find the right hair—fast.</h1>
+        <p class="lede">
+          Strandard helps you discover brands, compare real reviews, and save videos that match your exact look—
+          from texture and length to install type and color.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#perks">Explore the perks</a>
+          <a class="btn" href="/privacy-policy">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="phone-card" aria-label="Phone mockup and hover orbit">
+        <div class="circle-orbit" aria-hidden="true"></div>
+        <div class="phone-mock" aria-hidden="true">
+          <div class="phone-notch"></div>
+          <div style="padding:34px 18px 18px;">
+            <div style="display:flex; gap:10px; align-items:center;">
+              <div style="width:34px; height:34px; border-radius:12px; background:rgba(243,159,169,.35); border:1px solid rgba(0,0,0,.08);"></div>
+              <div style="flex:1">
+                <div style="height:12px; width:62%; background:rgba(0,0,0,.10); border-radius:999px;"></div>
+                <div style="height:10px; width:40%; background:rgba(0,0,0,.07); border-radius:999px; margin-top:8px;"></div>
+              </div>
+            </div>
+
+            <div style="margin-top:18px; display:grid; gap:10px;">
+              <div style="height:72px; border-radius:18px; background:rgba(227,242,255,.7); border:1px solid rgba(0,0,0,.08);"></div>
+              <div style="height:72px; border-radius:18px; background:rgba(253,228,249,.7); border:1px solid rgba(0,0,0,.08);"></div>
+              <div style="height:72px; border-radius:18px; background:rgba(243,255,227,.7); border:1px solid rgba(0,0,0,.08);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</header>
-<main>
-  <section class="hero">
-    <div class="container">
-      <div class="heroGrid">
-        <div>
-          <div class="kicker">＊ HI GIRLIES!</div>
-          <h1 class="h1 hero-reveal" data-hr="0">A hair brand review<br/>app built for women<br/>by women</h1>
-          <p class="lede hero-reveal" data-hr="1">
-            Instead of relying on scattered videos, biased reviews, or brand claims, Strandard brings together tutorials,
-            real-world wear tests, and visual proof in one organized place. See how hair extensions look, feel, install,
-            and hold up over time before you buy.
-          </p>
-          <div class="badges hero-reveal" data-hr="2" aria-label="Download badges">
-            <a href="#" aria-label="Download on the App Store">
-              <img src="/assets/app-store-badge.png" alt="Download on the App Store">
-            </a>
-            <a href="#" aria-label="Get it on Google Play">
-              <img src="/assets/google-play-badge.png" alt="Get it on Google Play">
-            </a>
-          </div>
-        </div>
-
-        <div class="heroArt">
-          <div class="phoneWrap">
-            <!-- decorative icons (randomly placed) -->
-            <img class="decorIcon decorSparklesTop" src="/assets/decor-sparkles-pink.png" alt="" aria-hidden="true">
-            <img class="decorIcon decorLightning" src="/assets/decor-lightning.png" alt="" aria-hidden="true">
-
-            
-<svg class="badgeSpin hero-reveal" data-hr="4" viewBox="0 0 140 140" role="img" aria-label="Join badge">
-  <circle cx="70" cy="70" r="60" fill="#FFF5C9" stroke="#1C1C1C" stroke-width="3"/>
-  <defs>
-    <path id="textCircle" d="M70,70 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/>
-  </defs>
-  <text font-family="DM Sans, system-ui, sans-serif" font-size="11.5" font-weight="700" fill="#1C1C1C" letter-spacing="1.2">
-    <textPath href="#textCircle" startOffset="50%" text-anchor="middle">
-      DOWNLOAD ME • I'M FREE • JOIN ME • DOWNLOAD ME • I'M FREE • JOIN ME •
-    </textPath>
-  </text>
-  <!-- center arrow -->
-  <g transform="translate(70 70)">
-    <circle r="20" fill="#F39FA9" stroke="#1C1C1C" stroke-width="3"/>
-    <path d="M0-8v16" stroke="#1C1C1C" stroke-width="3" stroke-linecap="round"/>
-    <path d="M-6 4l6 6 6-6" stroke="#1C1C1C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-</svg>
-</div>
-
-            <img class="phone hero-reveal" data-hr="3" src="/assets/Strandard-Phone.png" alt="Strandard app preview on phone">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section sectionPink">
-    <img class="decorIcon decorSparklesPerks" src="/assets/decor-sparkles-burgundy.png" alt="" aria-hidden="true">
-    <img class="decorIcon decorSparklesPerks2" src="/assets/decor-sparkles-pink.png" alt="" aria-hidden="true">
-    <div class="container">
-      <div class="center"><div class="pillTag">＊ PERKS</div></div>
-      <h2 class="sectionTitle">The Perks of Joining Us</h2>
-
-      <div class="perkGrid" aria-label="Perks">
-        <article class="card reveal" data-index="0">
-          <div class="iconBubble" aria-hidden="true">
-            <!-- puzzle icon -->
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M8 4h3a2 2 0 1 1 4 0h3a2 2 0 0 1 2 2v3a2 2 0 1 0 0 4v3a2 2 0 0 1-2 2h-3a2 2 0 1 1-4 0H8a2 2 0 0 1-2-2v-3a2 2 0 1 0 0-4V6a2 2 0 0 1 2-2z"/>
-            </svg>
-          </div>
-          <div>
-            <h3>No more guesswork</h3>
-            <p>Find extensions that actually match your texture.</p>
-          </div>
-        </article>
-
-        <article class="card tint-mint reveal" data-index="1">
-          <div class="iconBubble" aria-hidden="true">
-            <!-- search icon -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="M21 21l-4.3-4.3"></path>
-            </svg>
-          </div>
-          <div>
-            <h3>Filters that actually make sense</h3>
-            <p>Search by length, curl pattern, density, color.</p>
-          </div>
-        </article>
-
-        <article class="card tint-lav reveal" data-index="2">
-          <div class="iconBubble" aria-hidden="true">
-            <!-- gift icon -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 12v10H4V12"></path>
-              <path d="M2 7h20v5H2z"></path>
-              <path d="M12 22V7"></path>
-              <path d="M12 7H7.5a2.5 2.5 0 1 1 0-5C10 2 12 7 12 7z"></path>
-              <path d="M12 7h4.5a2.5 2.5 0 1 0 0-5C14 2 12 7 12 7z"></path>
-            </svg>
-          </div>
-          <div>
-            <h3>Your hair profile, your algorithm</h3>
-            <p>Personalized brand picks built for you.</p>
-          </div>
-        </article>
-
-        <article class="card tint-blue reveal" data-index="3">
-          <div class="iconBubble" aria-hidden="true">
-            <!-- glowing hair icon -->
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <!-- flowing hair -->
-              <path d="M6 8c2-3 5-4 8-4 4 0 7 2 8 6" />
-              <path d="M5 12c2-2 4-3 7-3 5 0 8 3 9 8" />
-              <path d="M4 16c2-1 4-2 6-2 6 0 9 3 10 6" />
-              <!-- glow sparkles -->
-              <path d="M8 5l.6 1.6L10 7.2l-1.4.6L8 9.4 7.4 7.8 6 7.2l1.4-.6L8 5z" fill="#FFF5C9"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Real reviews, real installs</h3>
-            <p>See what brands look like on real people.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section contactSection contactBg">
-    <div class="container">
-      <img class="decorIcon decorEnvelope" src="/assets/decor-envelope.png" alt="" aria-hidden="true">
-
-      <div class="panel">
-        <div class="center"><div class="pillTag">＊ CONTACT</div></div>
-        <h2>Have some questions?<br/>Slide in our dms!</h2>
-
-        <form id="contactForm" class="formGrid" action="#" method="post" novalidate>
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" placeholder="Your name *" required />
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email address *" required />
-          </div>
-          <div class="field full">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
-          </div>
-          <div class="field full submitRow">
-            <button class="btn" type="submit">Submit</button>
-            <div id="contactStatus" class="formStatus" aria-live="polite"></div>
-          </div>
-        </form>
-      </div>
-
-      <img class="decorIcon decorClouds" src="/assets/decor-clouds.png" alt="" aria-hidden="true">
-    </div>
-  </section>
 </main>
-<footer class="footer">
+
+<section class="sparkle-band" aria-label="Decorative sparkles">
   <div class="container">
-    <div class="footerGrid">
-      <div class="footerLogo">
-        <img src="/assets/icon-only.png" alt="Strandard logo">
-      </div>
-      <div class="footerLinks">
-        <a href="/index.html">Homepage</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/delete-account.html">Delete Account</a>
-      </div>
-      <div></div>
+    <div class="sparkle-wrap">
+      <img src="/assets/decor-sparkles-burgandy.png" alt="Decorative sparkles" loading="lazy" />
     </div>
-    <div class="copy">© 2026 Strandard</div>
   </div>
-</footer>
-<script src="/script.js"></script>
+</section>
+
+<section id="perks" class="section">
+  <div class="container">
+    <h2>Why Strandard</h2>
+    <div class="perks">
+      <article class="card" data-reveal="card">
+        <span class="tag">Filters that matter</span>
+        <h3>Search by the details you actually care about</h3>
+        <p>Texture, length, color, install type, budget, and more—so you’re not guessing.</p>
+      </article>
+      <article class="card" data-reveal="card">
+        <span class="tag">Real reviews</span>
+        <h3>See what it looks like on real people</h3>
+        <p>Reviews + videos + photos in one place. Less hype. More proof.</p>
+      </article>
+      <article class="card" data-reveal="card">
+        <span class="tag">Save your finds</span>
+        <h3>Build a hair “wishlist” that’s organized</h3>
+        <p>Save brands, installs, and videos so you can come back when you’re ready.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="y"></span> Strandard. All rights reserved.</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/delete-account">Delete Account</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

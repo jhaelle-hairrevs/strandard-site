@@ -3,243 +3,100 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#630625" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="/assets/icon-only.png?v=1">
-  <link rel="shortcut icon" type="image/png" href="/assets/icon-only.png?v=1">
-  <link rel="apple-touch-icon" href="/assets/icon-only.png?v=1">
-  <link rel="stylesheet" href="/styles.css" />
   <title>Delete Account • Strandard</title>
+  <meta name="description" content="Strandard – the gold strandard of hair."/>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/app.js" defer></script>
 </head>
 <body>
-<header class="topbar">
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="/index.html" aria-label="Strandard home">
-        <img src="/assets/icon-only.png" alt="Strandard logo">
-      </a>
-      <nav class="navlinks" aria-label="Primary">
-        <a href="/index.html">Home</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a class="active" href="/delete-account.html">Delete Account</a>
-      </nav>
-    </div>
-  </div>
-</header>
-
-<main class="pageWrap">
-  <div class="container">
-    <div class="panel pageCard">
-      <h1>Delete Your Strandard Account</h1>
-
-      <p class="ledeLight">
-        It’s never easy saying goodbye, and we’re sorry to see you go. If you would like to permanently delete your
-        Strandard account and the personal data associated with it, you may submit a deletion request below.
-      </p>
-
-      <h2 class="miniHeading">What gets deleted:</h2>
-      <p>When your deletion is processed, we remove:</p>
-      <ul>
-        <li>Your account authentication credentials</li>
-        <li>Your saved profile details (hair profile, preferences)</li>
-        <li>Your submitted personal data that’s tied to your account</li>
-        <li>Any private data linked to your email or user ID</li>
-      </ul>
-
-      <h2 class="miniHeading">What may remain:</h2>
-      <p>
-        If you posted reviews or content that appears publicly, we will either delete it or anonymize it so it is no
-        longer tied to you, depending on what’s required for platform integrity and legal compliance.
-      </p>
-
-      <h2 class="miniHeading">How long it takes:</h2>
-      <p>
-        Most deletion requests are processed within <strong>7 days</strong>. In some cases, it may take up to
-        <strong>30 days</strong> to fully remove data from backups.
-      </p>
-
-      <p>
-        If you need help, email us at <a class="supportLink" href="mailto:support@thestrandard.com">support@thestrandard.com</a>.
-      </p>
-
-      <p class="muted" style="margin-top:18px;">
-        Submit the email used for your account. We process deletion requests within 7 days. Backup removal may take up to 30 days.
-      </p>
-
-      <form id="deleteForm" class="deleteForm" novalidate>
-        <div class="field full">
-          <label for="del-email">Email</label>
-          <input id="del-email" name="email" type="email" placeholder="Email used for your Strandard account" required />
-        </div>
-
-        <div class="field full">
-          <label for="del-reason">Reason (optional)</label>
-          <textarea id="del-reason" name="reason" placeholder="Reason for deletion (optional)"></textarea>
-        </div>
-
-
-        <div class="field full">
-          <label>What would you like to delete?</label>
-          <div class="radioGroup" role="radiogroup" aria-label="Deletion preference">
-            <label class="radioOption">
-              <input type="radio" name="deletion_preference" value="data_only" required>
-              <span>Delete my data only (including reviews &amp; videos)</span>
-            </label>
-            <label class="radioOption">
-              <input type="radio" name="deletion_preference" value="account_keep_data">
-              <span>Delete my account, but keep my data in the app (so other women can benefit)</span>
-            </label>
-            <label class="radioOption">
-              <input type="radio" name="deletion_preference" value="both">
-              <span>Delete both my account and my data</span>
-            </label>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="/" aria-label="Go to Strandard home">
+          <img src="/assets/logo.svg" alt="Strandard logo" />
+          <div class="wordmark">
+            <div class="title">Strandard</div>
+            <div class="sub">the gold strandard of hair</div>
           </div>
-        </div>
-
-        <div class="field full checkboxRow">
-          <label class="checkLabel">
-            <input id="del-confirm" type="checkbox" />
-            <span>I understand this deletion is permanent</span>
-          </label>
-        </div>
-
-        <div class="field full submitRow">
-          <button id="del-submit" class="btn btnWide" type="submit">Request account deletion</button>
-          <div id="del-status" class="formStatus" aria-live="polite"></div>
-        </div>
-      </form>
+        </a>
+        <nav class="links" aria-label="Primary">
+          <a data-nav href="/">Home</a>
+          <a data-nav href="/privacy-policy">Privacy Policy</a>
+          <a data-nav href="/delete-account">Delete Account</a>
+        </nav>
+      </div>
     </div>
-  </div>
+  </header>
+  
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="wrap">
+        <div class="badge">Account</div>
+        <h1>Delete Your Strandard Account</h1>
+        <p>If you’d like to permanently delete your account and associated personal data, you can submit a deletion request below.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px;">
+    <div class="container">
+      <div class="legal-layout">
+        <div class="prose">
+          <div class="notice"><strong>Note:</strong> If you no longer have access to the email on your account, contact <a href="mailto:support@thestrandard.com">support@thestrandard.com</a> for help.</div>
+
+          <h2>What gets deleted</h2>
+          <p>When your deletion is processed, we remove:</p>
+          <ul>
+            <li>Your account authentication credentials</li>
+            <li>Your saved profile details (hair profile, preferences)</li>
+            <li>Your submitted personal data that is tied to your account</li>
+            <li>Any private data linked to your email or user ID</li>
+          </ul>
+
+          <h2>What may remain</h2>
+          <p>If you posted reviews or content that appears publicly, we will either delete it or anonymize it so it is no longer tied to you, depending on what’s required for platform integrity and legal compliance.</p>
+
+          <h2>How long it takes</h2>
+          <p>Most deletion requests are processed within <strong>7 days</strong>. In some cases, it may take up to <strong>30 days</strong> to fully remove data from backups.</p>
+
+          <h2>Submit a deletion request</h2>
+          <form class="form" onsubmit="event.preventDefault(); alert('Thanks — your request has been recorded. Please check your email for next steps.');">
+            <input class="input" type="email" required placeholder="Email address on the account" aria-label="Email address" />
+            <input class="input" type="text" placeholder="Optional: Reason (helps us improve)" aria-label="Reason" />
+            <button class="btn primary" type="submit">Request account deletion</button>
+            <div class="small">This form is a placeholder. Wire it to your backend endpoint (or support workflow) when ready.</div>
+          </form>
+        </div>
+
+        <aside class="sidecard" aria-label="Deletion summary">
+          <p class="k">Deletion summary</p>
+          <p class="v"><strong>Typical processing:</strong> 7 days</p>
+          <p class="v" style="margin-top:10px;"><strong>Backup removal:</strong> up to 30 days</p>
+          <p class="v" style="margin-top:10px;"><strong>Support:</strong> <a href="mailto:support@thestrandard.com">support@thestrandard.com</a></p>
+          <p class="v" style="margin-top:10px;"><strong>Public content:</strong> deleted or anonymized</p>
+        </aside>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footerGrid">
-      <div class="footerLogo">
-        <img src="/assets/icon-only.png" alt="Strandard logo">
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="y"></span> Strandard. All rights reserved.</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/delete-account">Delete Account</a>
+        </div>
       </div>
-      <div class="footerLinks">
-        <a href="/index.html">Homepage</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/delete-account.html">Delete Account</a>
-      </div>
-      <div></div>
     </div>
-    <div class="copy">© 2026 Strandard</div>
-  </div>
-</footer>
-
-<script type="module">
-  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-  import { SUPABASE_URL, SUPABASE_KEY } from "/config.js";
-
-  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-  const form = document.getElementById("deleteForm");
-  const emailEl = document.getElementById("del-email");
-  const reasonEl = document.getElementById("del-reason");
-  const confirmEl = document.getElementById("del-confirm");
-  const statusEl = document.getElementById("del-status");
-  const submitBtn = document.getElementById("del-submit");
-
-  function setStatus(message, type) {
-    statusEl.textContent = message || "";
-    statusEl.dataset.type = type || "";
-  }
-
-  function isValidEmail(value) {
-    // NOTE: use single backslashes in regex literal
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
-  }
-
-  [emailEl, reasonEl, confirmEl].forEach((el) => {
-    el.addEventListener("input", () => setStatus("", ""));
-    el.addEventListener("change", () => setStatus("", ""));
-  });
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    setStatus("", "");
-
-    const email = emailEl.value.trim();
-    const reason = reasonEl.value.trim();
-    const prefEl = form.querySelector('input[name="deletion_preference"]:checked');
-    const pref = prefEl ? prefEl.value : "";
-
-    if (!isValidEmail(email)) {
-      setStatus("Please enter a valid email address.", "error");
-      emailEl.focus();
-      return;
-    }
-    if (!confirmEl.checked) {
-      setStatus("Please confirm that you understand deletion is permanent.", "error");
-      confirmEl.focus();
-      return;
-    }
-    if (!pref) {
-      setStatus("Please select what you would like to delete.", "error");
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting...";
-
- 
-    try {
-      const prefMap = {
-        data_only: "Delete my data only (including reviews & videos)",
-        account_keep_data: "Delete my account, but keep my data in the app",
-        both: "Delete both my account and my data"
-      };
-      const prefLabel = prefMap[pref] || pref;
-
-      const reasonWithPref = `${reason ? reason + "\n\n" : ""}Deletion preference: ${prefLabel}`;
-
-      const res = await supabase
-        .from("delete_requests")
-        .insert([{ email, reason: reasonWithPref }]);
-
-      if (res.error) throw res.error;
-
-      form.reset();
-      setStatus("Request received. We’ll follow up if we need verification.", "success");
-    } catchh (err) {
-      console.error('Delete request error:', err);
-
-      const msg = String(err?.message || err || '');
-      // Common Supabase errors:
-      // - RLS blocks anon inserts (code 42501)
-      // - Column doesn't exist
-      // - Table missing
-      if (msg.toLowerCase().includes('row level security') || String(err?.code) === '42501') {
-        setStatus(
-          "Your database is blocking anonymous submissions (RLS). Please enable an INSERT policy for delete_requests, or email support@thestrandard.com.",
-          "error"
-        );
-      } else if (msg.toLowerCase().includes('column') && msg.toLowerCase().includes('does not exist')) {
-        setStatus(
-          "Form submitted, but the table schema doesn't match. Ensure delete_requests has columns: email (text) and reason (text).",
-          "error"
-        );
-      } else if (msg.toLowerCase().includes('relation') && msg.toLowerCase().includes('does not exist')) {
-        setStatus(
-          "The delete_requests table was not found in Supabase. Create it (email, reason, created_at) or email support@thestrandard.com.",
-          "error"
-        );
-      } else {
-        setStatus(
-          "Something went wrong. Please try again or email support@thestrandard.com.",
-          "error"
-        );
-      }
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Request account deletion";
-    }
-  });
-</script>
+  </footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
