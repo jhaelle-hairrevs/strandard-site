@@ -1,3 +1,4 @@
+html, body { cursor: auto; }
 :root{
   --burgundy:#630625;
   --pink:#F39FA9;
@@ -278,16 +279,6 @@ button,input,textarea{font:inherit;}
 .card.tint-lav{background:var(--lav);}
 .card.tint-mint{background:var(--mint);}
 .card.tint-butter{background:var(--butter);}
-.iconBubble{
-  flex:0 0 auto;
-  width:56px;
-  height:56px;
-  border-radius:999px;
-  background:rgba(243,159,169,.55);
-  border:2px solid var(--stroke);
-  display:grid;
-  place-items:center;
-}
 .card h3{
   margin:0 0 6px;
   font-family:"Cabinet Grotesk", "DM Sans", system-ui, sans-serif;
@@ -527,14 +518,11 @@ button,input,textarea{font:inherit;}
 
 /* custom cursor */
 :root{
-  --cursor-default: url('assets/pointer-24.png') 2 2, auto;
-  --cursor-select: url('assets/select-24.png') 6 2, pointer;
-  --cursor-text: url('assets/text-24.png') 10 16, text;
 }
-html, body{cursor: var(--cursor-default);}
-a, button, [role="button"], .btn, .storeBadges a{cursor: var(--cursor-select);}
-input, textarea, select{cursor: var(--cursor-text);}
-label{cursor: var(--cursor-select);}
+html, body{cursor: auto; }
+a, button, [role="button"], .btn, .storeBadges a{cursor: auto; }
+input, textarea, select{cursor: auto; }
+label{cursor: auto; }
 
 
 /* badge spin (hair dryer) */
@@ -562,24 +550,13 @@ label{cursor: var(--cursor-select);}
 body{
   cursor: url("/assets/pointer.png") 4 2, auto;
 }
-a, button, .btn, .pillTag, .card, input[type="checkbox"], label{
-  cursor: url("/assets/select.png") 6 2, pointer;
-}
-input[type="text"], input[type="email"], textarea{
+a, button, .btn, .pillTag, .card, input[type="text"], input[type="email"], textarea{
   cursor: url("/assets/text.png") 6 2, text;
 }
 
 
 
 /* Perk icon images */
-.iconBubble img.perkIconImg{
-  width:28px;
-  height:28px;
-  object-fit:contain;
-  display:block;
-}
-
-
 /* policy spacing */
 .policyPage .miniHeading{margin-top:38px;}
 .policyPage ul{margin-top:12px;}
@@ -656,12 +633,9 @@ input, textarea, select {
 .legalPage main h3{font-size:18px; line-height:1.25; margin:18px 0 8px;}
 .legalPage main p, .legalPage main li{font-size:16px; line-height:1.7;}
 
-.perkCard{cursor: var(--cursor-default);} 
+.perkCard{cursor: auto; } 
 
-.card{cursor: var(--cursor-default);} 
-
-.iconBubble img.perkIconImg{width:30px;height:30px;display:block;}
-
+.card{cursor: auto; } 
 
 /* --- Fixes: legal pages + form UI --- */
 body.legalPage{
@@ -750,10 +724,28 @@ body.legalPage{
   object-fit: contain;
   display:block;
 }
-.iconBubble{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
 /* prevent perks headings from looking clickable */
 .perkGrid h3, .perkGrid p{ cursor: default; }
+
+
+/* Perk card colors (restore) */
+.perkGrid .card:nth-child(1){ background: #F7F7F7; }
+.perkGrid .card:nth-child(2){ background: #F3FFE3; }
+.perkGrid .card:nth-child(3){ background: #FDE4F9; }
+.perkGrid .card:nth-child(4){ background: #E3F2FF; }
+
+/* Icon bubble + image sizing */
+.iconBubble{
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #F39FA9;
+}
+.iconBubble img.perkIconImg{
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
