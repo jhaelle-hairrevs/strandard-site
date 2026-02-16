@@ -4,27 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Delete Account | Strandard</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" type="image/png" href="/assets/icon-only.png" />
-  <link rel="apple-touch-icon" href="/assets/icon-only.png" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="/js/delete-account.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="/"><img src="/assets/icon-only.png" alt="Strandard" class="brand-logo" /></a>
-      <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/delete-account/">Delete Account</a>
+<header class="topbar">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="/" aria-label="Strandard home">
+        <img src="/assets/icon-only.png" alt="Strandard logo">
+      </a>
+      <nav class="navlinks" aria-label="Primary">
+        <a class="" href="/">Home</a>
+        <a class="" href="/privacy-policy/">Privacy Policy</a>
+        <a class="active" href="/delete-account/">Delete Account</a>
       </nav>
     </div>
-  </header>
-
-  <main class="legal-wrap">
-    <div class="legal-card">
-      <h1>Delete Your Strandard Account</h1>
+  </div>
+</header>
+<main class="legalBg">
+  <div class="container">
+    <div class="panel">
+<h1>Delete Your Strandard Account</h1>
       <p class="muted">It’s never easy saying goodbye, and we’re sorry to see you go. If you would like to permanently delete your Strandard account and the personal data associated with it, you may submit a deletion request below.</p>
 
       <h2>What gets deleted</h2>
@@ -86,26 +87,34 @@
       </form>
 
       <p class="support-line">If you need help, email us at <a href="mailto:support@thestrandard.com">support@thestrandard.com</a>.</p>
+    
     </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <a class="footer-brand" href="/"><img src="/assets/icon-only.png" alt="Strandard" class="footer-logo" /></a>
-      <nav class="footer-nav">
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footerGrid">
+      <div class="footerLogo">
+        <img src="/assets/icon-only.png" alt="Strandard logo">
+      </div>
+      <div class="footerLinks">
         <a href="/">Homepage</a>
         <a href="/privacy-policy/">Privacy Policy</a>
         <a href="/delete-account/">Delete Account</a>
-      </nav>
-      <div class="footer-copy">© 2026 Strandard</div>
+      </div>
+      <div></div>
     </div>
-  </footer>
-
-  <script>
-    window.__STRANDARD_SUPABASE__ = {
-      url: "https://qhqcbufoyulzwkeoisxd.supabase.co",
-      key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFocWNidWZveXVsendrZW9pc3hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3OTQxNTIsImV4cCI6MjA4MjM3MDE1Mn0.qFFBkjyeIqOCtgWocveegQWTa1V3CrH_vmnrpcYeGRw"
-    };
-  </script>
+    <div class="copy">© 2026 Strandard</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  window.__STRANDARD_SUPABASE__ = {
+    url: "https://qhqcbufoyulzwkeoisxd.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFocWNidWZveXVsendrZW9pc3hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3OTQxNTIsImV4cCI6MjA4MjM3MDE1Mn0.qFFBkjyeIqOCtgWocveegQWTa1V3CrH_vmnrpcYeGRw"
+  };
+</script>
+<script defer src="/js/delete-account.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>
