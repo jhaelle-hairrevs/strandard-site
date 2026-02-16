@@ -127,10 +127,14 @@
 </footer>
 
 <script type="module">
+  console.log("Delete account script loaded");
   import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
   import { SUPABASE_URL, SUPABASE_KEY } from "/config.js";
 
+  console.log("Supabase config:", { SUPABASE_URL, SUPABASE_KEY });
+  
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  console.log("Supabase client created:", supabase);
 
   const form = document.getElementById("deleteForm");
   const emailEl = document.getElementById("del-email");
@@ -156,12 +160,15 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    console.log("Form submit triggered");
     setStatus("", "");
 
     const email = emailEl.value.trim();
     const reason = reasonEl.value.trim();
     const prefEl = form.querySelector('input[name="deletion_preference"]:checked');
     const pref = prefEl ? prefEl.value : "";
+
+    console.log("Form values:", { email, reason, pref });
 
     if (!isValidEmail(email)) {
       setStatus("Please enter a valid email address.", "error");
@@ -183,6 +190,7 @@
 
  
     try {
+      console.log("Attempting Supabase insert...");
       const prefMap = {
         data_only: "Delete my data only (including reviews & videos)",
         account_keep_data: "Delete my account, but keep my data in the app",
@@ -195,6 +203,8 @@
       const res = await supabase
         .from("delete_requests")
         .insert([{ email, reason: reasonWithPref }]);
+
+      console.log("Supabase response:", res);
 
       if (res.error) throw res.error;
 
