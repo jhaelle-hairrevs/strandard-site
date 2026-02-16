@@ -109,12 +109,85 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  window.__STRANDARD_SUPABASE__ = {
-    url: "https://qhqcbufoyulzwkeoisxd.supabase.co",
-    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFocWNidWZveXVsendrZW9pc3hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3OTQxNTIsImV4cCI6MjA4MjM3MDE1Mn0.qFFBkjyeIqOCtgWocveegQWTa1V3CrH_vmnrpcYeGRw"
-  };
+  const SUPABASE_URL = "https://qhqcbufoyulzwkeoisxd.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFocWNidWZveXVsendrZW9pc3hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3OTQxNTIsImV4cCI6MjA4MjM3MDE1Mn0.qFFBkjyeIqOCtgWocveegQWTa1V3CrH_vmnrpcYeGRw";
+
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const msgEl = document.getElementById("dr_message");
+  const emailEl = document.getElementById("dr_email");
+  const reasonEl = document.getElementById("dr_reason");
+  const ackEl = document.getElementById("dr_ack");
+
+  const emailErr = document.getElementById("dr_email_err");
+  const optErr = document.getElementById("dr_option_err");
+  const ackErr = document.getElementById("dr_ack_err");
+
+  function setMsg(text, kind) {
+    msgEl.textContent = text || "";
+    msgEl.classList.remove("ok", "err");
+    if (kind) msgEl.classList.add(kind);
+  }
+
+  function clearErrors() {
+    emailErr.textContent = "";
+    optErr.textContent = "";
+    ackErr.textContent = "";
+  }
+
+  function validEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || "").trim());
+  }
+
+  const form = document.getElementById("deleteRequestForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearErrors();
+    setMsg("", null);
+
+    const email = emailEl.value.trim();
+    const reason = (reasonEl.value || "").trim();
+    const optionEl = document.querySelector('input[name="delete_option"]:checked');
+    const option = optionEl ? optionEl.value : "";
+    const ack = !!ackEl.checked;
+
+    let hasErr = false;
+    if (!validEmail(email)) {
+      emailErr.textContent = "Please enter a valid email address.";
+      hasErr = true;
+    }
+    if (!option) {
+      optErr.textContent = "Please select one option.";
+      hasErr = true;
+    }
+    if (!ack) {
+      ackErr.textContent = "Please confirm before submitting.";
+      hasErr = true;
+    }
+    if (hasErr) return;
+
+    const payload = {
+      email,
+      reason: reason || null,
+      delete_data_only: option === "data_only",
+      delete_account_keep_data: option === "account_keep_data",
+      delete_both: option === "delete_both"
+    };
+
+    try {
+      const { error } = await supabaseClient.from("delete_requests").insert([payload]);
+      if (error) {
+        console.error("Supabase insert error:", error);
+        setMsg("Something went wrong. Please try again or email support@thestrandard.com.", "err");
+        return;
+      }
+      form.reset();
+      setMsg("Request received. We'll review your deletion request and follow up if needed.", "ok");
+    } catch (err) {
+      console.error(err);
+      setMsg("Something went wrong. Please try again or email support@thestrandard.com.", "err");
+    }
+  });
 </script>
-<script defer src="/js/delete-account.js"></script>
-<script src="/script.js"></script>
 </body>
 </html>
