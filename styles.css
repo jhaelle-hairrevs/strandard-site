@@ -555,22 +555,7 @@ button,input,textarea{font:inherit;}
 .formStatus{margin-top:0;}
 
 
-/* --- Custom cursors (ONLY SET) --- */
-html, body {
-  cursor: url("/assets/select.png") 2 2, auto;
-}
-a, button, .btn, .pillTag, .card, .storeBadge, [role="button"], input[type="text"], input[type="email"] {
-  cursor: url("/assets/pointer.png") 2 2, pointer;
-}
-input, textarea, select {
-  cursor: url("/assets/text.png") 8 12, text;
-}
-
-/* Checkbox and radio inputs use default pointer cursor */
-input[type="checkbox"],
-input[type="radio"] {
-  cursor: pointer;
-}
+/* --- Custom cursors - removed --- */
 
 /* Prevent "Perks" header and cards from looking clickable */
 .sectionPink .eyebrow,
