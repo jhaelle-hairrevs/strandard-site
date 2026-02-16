@@ -141,7 +141,7 @@ button,input,textarea{font:inherit;}
 }
 .phoneWrap{
   position:relative;
-  width:min(420px, 100%);
+  width:min(520px, 100%);
 }
 .phoneWrap img.phone{
   width:100%;
@@ -523,12 +523,12 @@ button,input,textarea{font:inherit;}
 
 /* custom cursor */
 :root{
-  --cursor-default: url('assets/pointer.png') 4 2, auto;
-  --cursor-select: url('assets/select.png') 4 2, pointer;
-  --cursor-text: url('assets/text.png') 6 14, text;
+  --cursor-default: url('assets/pointer-24.png') 2 2, auto;
+  --cursor-select: url('assets/select-24.png') 6 2, pointer;
+  --cursor-text: url('assets/text-24.png') 10 16, text;
 }
 html, body{cursor: var(--cursor-default);}
-a, button, [role="button"], .reveal, .perkCard, .btn, .storeBadges a{cursor: var(--cursor-select);}
+a, button, [role="button"], .btn, .storeBadges a{cursor: var(--cursor-select);}
 input, textarea, select{cursor: var(--cursor-text);}
 label{cursor: var(--cursor-select);}
 
@@ -640,3 +640,20 @@ input, textarea, select {
   margin-top: 10px;
 }
 .legalSection li{ margin: 6px 0; }
+
+.checkbox span{color:#d10000; font-weight:800;}
+
+/* keep hero decor away from badge */
+.decorSparklesPink{right:24px; top:24px; opacity:.9;}
+
+/* legal pages */
+.legalPage main h1{font-size:52px; line-height:1.05; margin:0 0 14px;}
+.legalPage main h2{font-size:24px; line-height:1.2; margin:28px 0 10px;}
+.legalPage main h3{font-size:18px; line-height:1.25; margin:18px 0 8px;}
+.legalPage main p, .legalPage main li{font-size:16px; line-height:1.7;}
+
+.perkCard{cursor: var(--cursor-default);} 
+
+.card{cursor: var(--cursor-default);} 
+
+.iconBubble img.perkIconImg{width:30px;height:30px;display:block;}
