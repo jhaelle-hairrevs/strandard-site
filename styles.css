@@ -566,6 +566,12 @@ input, textarea, select {
   cursor: url("/assets/text.png") 8 12, text;
 }
 
+/* Checkbox and radio inputs use default pointer cursor */
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+}
+
 /* Prevent "Perks" header and cards from looking clickable */
 .sectionPink .eyebrow,
 .sectionPink .sectionTitle,
