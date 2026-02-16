@@ -741,7 +741,7 @@ body.legalPage{
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: #F39FA9;
+  background: transparent;
 }
 .iconBubble img.perkIconImg{
   width: 60px;
