@@ -516,13 +516,7 @@ button,input,textarea{font:inherit;}
 .hero-reveal.in{opacity:1; transform: translateY(0);}
 
 
-/* custom cursor */
-:root{
-}
-html, body{cursor: auto; }
-a, button, [role="button"], .btn, .storeBadges a{cursor: auto; }
-input, textarea, select{cursor: auto; }
-label{cursor: auto; }
+/* custom cursor - consolidated below */
 
 
 /* badge spin (hair dryer) */
@@ -546,13 +540,7 @@ label{cursor: auto; }
 
 
 
-/* Custom cursors (drop your PNGs in /assets/) */
-body{
-  cursor: url("/assets/pointer.png") 4 2, auto;
-}
-a, button, .btn, .pillTag, .card, input[type="text"], input[type="email"], textarea{
-  cursor: url("/assets/text.png") 6 2, text;
-}
+/* Consolidated custom cursors */
 
 
 
@@ -567,15 +555,15 @@ a, button, .btn, .pillTag, .card, input[type="text"], input[type="email"], texta
 .formStatus{margin-top:0;}
 
 
-/* --- Custom cursors (override) --- */
+/* --- Custom cursors (ONLY SET) --- */
 html, body {
-  cursor: url("/assets/select.png") 4 4, auto;
+  cursor: url("/assets/select.png") 2 2, auto;
 }
-a, button, .btn, .storeBadge, [role="button"] {
-  cursor: url("/assets/pointer.png") 4 4, pointer;
+a, button, .btn, .pillTag, .card, .storeBadge, [role="button"], input[type="text"], input[type="email"] {
+  cursor: url("/assets/pointer.png") 2 2, pointer;
 }
 input, textarea, select {
-  cursor: url("/assets/text.png") 10 16, text;
+  cursor: url("/assets/text.png") 8 12, text;
 }
 
 /* Prevent "Perks" header and cards from looking clickable */
