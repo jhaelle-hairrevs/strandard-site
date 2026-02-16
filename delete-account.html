@@ -27,7 +27,6 @@
         <a class="active" href="/delete-account.html">Delete Account</a>
       </nav>
     </div>
-  </div>
 </header>
 
 <main class="pageWrap">
@@ -36,7 +35,7 @@
       <h1>Delete Your Strandard Account</h1>
 
       <p class="ledeLight">
-        It’s never easy saying goodbye, and we’re sorry to see you go. If you would like to permanently delete your
+        It's never easy saying goodbye, and we're sorry to see you go. If you would like to permanently delete your
         Strandard account and the personal data associated with it, you may submit a deletion request below.
       </p>
 
@@ -45,14 +44,14 @@
       <ul>
         <li>Your account authentication credentials</li>
         <li>Your saved profile details (hair profile, preferences)</li>
-        <li>Your submitted personal data that’s tied to your account</li>
+        <li>Your submitted personal data that's tied to your account</li>
         <li>Any private data linked to your email or user ID</li>
       </ul>
 
       <h2 class="miniHeading">What may remain:</h2>
       <p>
         If you posted reviews or content that appears publicly, we will either delete it or anonymize it so it is no
-        longer tied to you, depending on what’s required for platform integrity and legal compliance.
+        longer tied to you, depending on what's required for platform integrity and legal compliance.
       </p>
 
       <h2 class="miniHeading">How long it takes:</h2>
@@ -97,7 +96,6 @@
               <span>Delete both my account and my data</span>
             </label>
           </div>
-        </div>
 
         <div class="field full checkboxRow">
           <label class="checkLabel">
@@ -109,10 +107,8 @@
         <div class="field full submitRow">
           <button id="del-submit" class="btn btnWide" type="submit">Request account deletion</button>
           <div id="del-status" class="formStatus" aria-live="polite"></div>
-        </div>
       </form>
     </div>
-  </div>
 </main>
 
 <footer class="footer">
@@ -127,9 +123,7 @@
         <a href="/delete-account.html">Delete Account</a>
       </div>
       <div></div>
-    </div>
     <div class="copy">© 2026 Strandard</div>
-  </div>
 </footer>
 
 <script type="module">
@@ -205,8 +199,8 @@
       if (res.error) throw res.error;
 
       form.reset();
-      setStatus("Request received. We’ll follow up if we need verification.", "success");
-    } catchh (err) {
+      setStatus("Request received. We'll follow up if we need verification.", "success");
+    } catch (err) {
       console.error('Delete request error:', err);
 
       const msg = String(err?.message || err || '');
