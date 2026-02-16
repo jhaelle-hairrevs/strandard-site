@@ -12,6 +12,10 @@
   --radius: 18px;
   --radius-lg: 26px;
   --max: 1140px;
+
+  --font-head:'Cabinet Grotesk', 'DM Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-body:'DM Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --text:#111;
 }
 
 /*
@@ -657,3 +661,99 @@ input, textarea, select {
 .card{cursor: var(--cursor-default);} 
 
 .iconBubble img.perkIconImg{width:30px;height:30px;display:block;}
+
+
+/* --- Fixes: legal pages + form UI --- */
+body.legalPage{
+  background: var(--burgundy);
+  color: var(--text);
+}
+.legalBg{
+  padding-top: 120px;
+  padding-bottom: 110px;
+}
+.legalBg h1{
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 58px);
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+.legalBg h2{
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 28px;
+  margin: 28px 0 10px;
+}
+.legalBg p, .legalBg li{
+  color: #111;
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+.delete-form{
+  margin-top: 22px;
+}
+.delete-form .field + .field{
+  margin-top: 22px;
+}
+.radio-group{
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+.radio{
+  display:flex;
+  gap: 10px;
+  align-items:flex-start;
+}
+.radio input{ margin-top: 4px; }
+.checkbox{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  margin-top: 18px;
+  user-select:none;
+}
+.checkbox strong, .checkbox span{
+  font-weight: 800;
+  color: #B30000;
+}
+.primary-btn{
+  width: 100%;
+  margin-top: 18px;
+  background: var(--burgundy);
+  color: white;
+  border: 2px solid var(--stroke);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, filter .12s ease;
+}
+.primary-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+.primary-btn:active{ transform: translateY(0); filter: brightness(.98); }
+.form-message{
+  margin-top: 10px;
+  font-size: 14px;
+}
+.support-line{
+  margin-top: 18px;
+  color:#111;
+}
+.support-line a{ color: var(--burgundy); font-weight: 700; }
+/* perk icons use images */
+.perkIconImg{
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display:block;
+}
+.iconBubble{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+/* prevent perks headings from looking clickable */
+.perkGrid h3, .perkGrid p{ cursor: default; }
